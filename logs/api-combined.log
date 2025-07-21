@@ -1,0 +1,732 @@
+2025-07-21T14:17:27: [dotenv@17.2.0] injecting env (17) from .env (tip: ⚙️  write to custom object with { processEnv: myObject })
+2025-07-21T14:17:28: [dotenv@17.2.0] injecting env (17) from .env (tip: ⚙️  enable debug logging with { debug: true })
+2025-07-21T14:17:28: [dotenv@17.2.0] injecting env (17) from .env (tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit)
+2025-07-21T14:17:29: [dotenv@17.2.0] injecting env (17) from .env (tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`)
+2025-07-21T14:17:29: [2025-07-21 08:47:29] DEBUG Creating transport: nodemailer (7.0.5; +https://nodemailer.com/; SMTP/7.0.5[client:7.0.5])
+2025-07-21T14:17:33: Server is running on http://localhost:3000
+2025-07-21T14:17:33: [2025-07-21 08:47:33] DEBUG [YeDuCY8xNk] Resolved smtp-relay.brevo.com as 1.179.116.1 [cache miss]
+2025-07-21T14:17:34: [2025-07-21 08:47:34] INFO  [YeDuCY8xNk] Connection established to 1.179.116.1:587
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 220 smtp-relay.brevo.com ESMTP Service Ready
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] C: EHLO [127.0.0.1]
+2025-07-21T14:17:34: Connected to redis
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 250-Hello [127.0.0.1]
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 250-PIPELINING
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 250-8BITMIME
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 250-ENHANCEDSTATUSCODES
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 250-CHUNKING
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 250-STARTTLS
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 250-AUTH PLAIN LOGIN CRAM-MD5
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 250 SIZE 20971520
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] C: STARTTLS
+2025-07-21T14:17:29: [2025-07-21 08:47:29] DEBUG Creating transport: nodemailer (7.0.5; +https://nodemailer.com/; SMTP/7.0.5[client:7.0.5])
+2025-07-21T14:17:34: Server is running on http://localhost:3000
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] Resolved smtp-relay.brevo.com as 1.179.116.1 [cache miss]
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 220 2.0.0 Ready to start TLS
+2025-07-21T14:17:34: [2025-07-21 08:47:34] INFO  [t8tjtkcyKwY] Connection established to 1.179.116.1:587
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 220 smtp-relay.brevo.com ESMTP Service Ready
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] C: EHLO [127.0.0.1]
+2025-07-21T14:17:34: [2025-07-21 08:47:34] INFO  [YeDuCY8xNk] Connection upgraded with STARTTLS
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] C: EHLO [127.0.0.1]
+2025-07-21T14:17:34: Connected to redis
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 250-Hello [127.0.0.1]
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 250-PIPELINING
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 250-8BITMIME
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 250-ENHANCEDSTATUSCODES
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 250-CHUNKING
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 250-STARTTLS
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 250-AUTH PLAIN LOGIN CRAM-MD5
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 250 SIZE 20971520
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] C: STARTTLS
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 250-Hello [127.0.0.1]
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 250-PIPELINING
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 250-8BITMIME
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 250-ENHANCEDSTATUSCODES
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 250-CHUNKING
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 250-AUTH PLAIN LOGIN CRAM-MD5
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 250 SIZE 20971520
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] SMTP handshake finished
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] C: AUTH PLAIN ADc5OWI2ODAwMUBzbXRwLWJyZXZvLmNvbQAvKiBzZWNyZXQgKi8=
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 220 2.0.0 Ready to start TLS
+2025-07-21T14:17:30: [2025-07-21 08:47:30] DEBUG Creating transport: nodemailer (7.0.5; +https://nodemailer.com/; SMTP/7.0.5[client:7.0.5])
+2025-07-21T14:17:34: Server is running on http://localhost:3000
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [hsAWinEZvLc] Resolved smtp-relay.brevo.com as 1.179.116.1 [cache miss]
+2025-07-21T14:17:34: [2025-07-21 08:47:34] INFO  [t8tjtkcyKwY] Connection upgraded with STARTTLS
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] C: EHLO [127.0.0.1]
+2025-07-21T14:17:34: [2025-07-21 08:47:34] INFO  [hsAWinEZvLc] Connection established to 1.179.116.1:587
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 235 2.0.0 Authentication succeeded
+2025-07-21T14:17:34: [2025-07-21 08:47:34] INFO  [YeDuCY8xNk] User "799b68001@smtp-brevo.com" authenticated
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] C: QUIT
+2025-07-21T14:17:34: Email transporter is ready to send emails.
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [hsAWinEZvLc] S: 220 smtp-relay.brevo.com ESMTP Service Ready
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [hsAWinEZvLc] C: EHLO [127.0.0.1]
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 250-Hello [127.0.0.1]
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 250-PIPELINING
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 250-8BITMIME
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 250-ENHANCEDSTATUSCODES
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 250-CHUNKING
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 250-AUTH PLAIN LOGIN CRAM-MD5
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] S: 250 SIZE 20971520
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] SMTP handshake finished
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [t8tjtkcyKwY] C: AUTH PLAIN ADc5OWI2ODAwMUBzbXRwLWJyZXZvLmNvbQAvKiBzZWNyZXQgKi8=
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] S: 221 2.0.0 Bye
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [YeDuCY8xNk] Closing connection to the server using "end"
+2025-07-21T14:17:34: [2025-07-21 08:47:34] INFO  [YeDuCY8xNk] Connection closed
+2025-07-21T14:17:34: Connected to redis
+2025-07-21T14:17:30: [2025-07-21 08:47:30] DEBUG Creating transport: nodemailer (7.0.5; +https://nodemailer.com/; SMTP/7.0.5[client:7.0.5])
+2025-07-21T14:17:34: Server is running on http://localhost:3000
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [k3wQdLDplWE] Resolved smtp-relay.brevo.com as 1.179.116.1 [cache miss]
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [hsAWinEZvLc] S: 250-Hello [127.0.0.1]
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [hsAWinEZvLc] S: 250-PIPELINING
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [hsAWinEZvLc] S: 250-8BITMIME
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [hsAWinEZvLc] S: 250-ENHANCEDSTATUSCODES
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [hsAWinEZvLc] S: 250-CHUNKING
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [hsAWinEZvLc] S: 250-STARTTLS
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [hsAWinEZvLc] S: 250-AUTH PLAIN LOGIN CRAM-MD5
+2025-07-21T14:17:34: [2025-07-21 08:47:34] DEBUG [hsAWinEZvLc] S: 250 SIZE 20971520
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [hsAWinEZvLc] C: STARTTLS
+2025-07-21T14:17:35: [2025-07-21 08:47:35] INFO  [k3wQdLDplWE] Connection established to 1.179.116.1:587
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [hsAWinEZvLc] S: 220 2.0.0 Ready to start TLS
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [t8tjtkcyKwY] S: 235 2.0.0 Authentication succeeded
+2025-07-21T14:17:35: [2025-07-21 08:47:35] INFO  [t8tjtkcyKwY] User "799b68001@smtp-brevo.com" authenticated
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [t8tjtkcyKwY] C: QUIT
+2025-07-21T14:17:35: Email transporter is ready to send emails.
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 220 smtp-relay.brevo.com ESMTP Service Ready
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] C: EHLO [127.0.0.1]
+2025-07-21T14:17:35: [2025-07-21 08:47:35] INFO  [hsAWinEZvLc] Connection upgraded with STARTTLS
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [hsAWinEZvLc] C: EHLO [127.0.0.1]
+2025-07-21T14:17:35: Connected to redis
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [t8tjtkcyKwY] S: 221 2.0.0 Bye
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [t8tjtkcyKwY] Closing connection to the server using "end"
+2025-07-21T14:17:35: [2025-07-21 08:47:35] INFO  [t8tjtkcyKwY] Connection closed
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 250-Hello [127.0.0.1]
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 250-PIPELINING
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 250-8BITMIME
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 250-ENHANCEDSTATUSCODES
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 250-CHUNKING
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 250-STARTTLS
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 250-AUTH CRAM-MD5 PLAIN LOGIN
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 250 SIZE 20971520
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] C: STARTTLS
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [hsAWinEZvLc] S: 250-Hello [127.0.0.1]
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [hsAWinEZvLc] S: 250-PIPELINING
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [hsAWinEZvLc] S: 250-8BITMIME
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [hsAWinEZvLc] S: 250-ENHANCEDSTATUSCODES
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [hsAWinEZvLc] S: 250-CHUNKING
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [hsAWinEZvLc] S: 250-AUTH PLAIN LOGIN CRAM-MD5
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [hsAWinEZvLc] S: 250 SIZE 20971520
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [hsAWinEZvLc] SMTP handshake finished
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [hsAWinEZvLc] C: AUTH PLAIN ADc5OWI2ODAwMUBzbXRwLWJyZXZvLmNvbQAvKiBzZWNyZXQgKi8=
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 220 2.0.0 Ready to start TLS
+2025-07-21T14:17:35: ✅ Database connected successfully
+2025-07-21T14:17:35: [2025-07-21 08:47:35] INFO  [k3wQdLDplWE] Connection upgraded with STARTTLS
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] C: EHLO [127.0.0.1]
+2025-07-21T14:17:35: ✅ Database connected successfully
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 250-Hello [127.0.0.1]
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 250-PIPELINING
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 250-8BITMIME
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 250-ENHANCEDSTATUSCODES
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 250-CHUNKING
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 250-AUTH PLAIN LOGIN CRAM-MD5
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 250 SIZE 20971520
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] SMTP handshake finished
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] C: AUTH PLAIN ADc5OWI2ODAwMUBzbXRwLWJyZXZvLmNvbQAvKiBzZWNyZXQgKi8=
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [hsAWinEZvLc] S: 235 2.0.0 Authentication succeeded
+2025-07-21T14:17:35: [2025-07-21 08:47:35] INFO  [hsAWinEZvLc] User "799b68001@smtp-brevo.com" authenticated
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [hsAWinEZvLc] C: QUIT
+2025-07-21T14:17:35: Email transporter is ready to send emails.
+2025-07-21T14:17:35: ✅ Database connected successfully
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [hsAWinEZvLc] S: 221 2.0.0 Bye
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [hsAWinEZvLc] Closing connection to the server using "end"
+2025-07-21T14:17:35: [2025-07-21 08:47:35] INFO  [hsAWinEZvLc] Connection closed
+2025-07-21T14:17:35: ✅ Database connected successfully
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 235 2.0.0 Authentication succeeded
+2025-07-21T14:17:35: [2025-07-21 08:47:35] INFO  [k3wQdLDplWE] User "799b68001@smtp-brevo.com" authenticated
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] C: QUIT
+2025-07-21T14:17:35: Email transporter is ready to send emails.
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] S: 221 2.0.0 Bye
+2025-07-21T14:17:35: [2025-07-21 08:47:35] DEBUG [k3wQdLDplWE] Closing connection to the server using "end"
+2025-07-21T14:17:35: [2025-07-21 08:47:35] INFO  [k3wQdLDplWE] Connection closed
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:00: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:00: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:00: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:00: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:00: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:00: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:00: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:00: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:01: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:01: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:01: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:01: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:02: Connected to redis
+2025-07-21T14:30:02: Connected to redis
+2025-07-21T14:30:02: Connected to redis
+2025-07-21T14:30:02: Connected to redis

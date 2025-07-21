@@ -1,0 +1,159 @@
+<mjml>
+  <mj-head>
+    <mj-title>Confirmation Document</mj-title>
+    <mj-font name="Inter" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
+    <mj-attributes>
+      <mj-all font-family="Inter, Arial, sans-serif" />
+      <mj-text font-size="13px" line-height="170%" color="#333" />
+    </mj-attributes>
+    <mj-style inline="inline">
+      .card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 24px;
+        margin-bottom: 24px;
+      }
+      .section-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1f2937;
+        border-bottom: 1px solid #d1d5db;
+        padding-bottom: 8px;
+        margin-bottom: 16px;
+      }
+      .field-grid {
+        display: grid;
+        grid-template-columns: 40% 60%;
+        row-gap: 10px;
+        column-gap: 8px;
+      }
+      .label {
+        font-weight: 500;
+        color: #374151;
+      }
+      .value {
+        color: #111827;
+      }
+      .document-list {
+        padding-top: 8px;
+        line-height: 1.8;
+      }
+    </mj-style>
+  </mj-head>
+
+  <mj-body background-color="#f9fafb">
+
+    <!-- HEADER -->
+    <mj-section padding="24px 0 8px">
+      <mj-column>
+        <mj-text align="center" font-size="22px" font-weight="600" color="#111827">
+          📄 Application Review Document
+        </mj-text>
+        <mj-text align="center" font-size="14px" font-weight="500" color="#6b7280" padding-top="8px">
+          Application No: {{jobPost.applicationNo}}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- MAIN WRAPPER -->
+    <mj-section padding="0 24px">
+      <mj-column>
+
+        <!-- BASIC INFO -->
+        <mj-text css-class="card">
+          <div class="section-title">Basic Information</div>
+          <div class="field-grid">
+            <div class="label">Application No:</div><div class="value">{{jobPost.applicationNo}}</div>
+            <div class="label">Name:</div><div class="value">{{user.name}}</div>
+            <div class="label">Job Post:</div><div class="value">{{formatJobPost jobPost.name}}</div>
+            <div class="label">Category:</div><div class="value">{{formatCategory category.categoryType}}</div>
+          </div>
+        </mj-text>
+
+        <!-- FAMILY DETAILS -->
+        <mj-text css-class="card">
+          <div class="section-title">Family & Personal Details</div>
+          <div class="field-grid">
+            <div class="label">Father:</div><div class="value">{{family.fatherName}}</div>
+            <div class="label">DOB:</div><div class="value">{{formatDate personalDetail.dateOfBirth}}</div>
+            <div class="label">Mother:</div><div class="value">{{family.motherName}}</div>
+            <div class="label">Gender:</div><div class="value">{{formatGender personalDetail.gender}}</div>
+            <div class="label">Nationality:</div><div class="value">{{personalDetail.nationality}}</div>
+          </div>
+        </mj-text>
+
+        <!-- ADDRESSES -->
+        <mj-text css-class="card">
+          <div class="section-title">Addresses</div>
+          <div class="field-grid">
+            {{#each address}}
+            <div class="label">{{formatAddressType this.addressType}}:</div>
+            <div class="value">{{this.addressLine}}, {{this.city}}, {{this.state}} - {{this.pinCode}}</div>
+            {{/each}}
+          </div>
+        </mj-text>
+
+        <!-- EXAM CENTERS -->
+        <mj-text css-class="card">
+          <div class="section-title">Exam Centers</div>
+          <div class="field-grid">
+            {{#each examinationPreferences}}
+            <div class="label">{{choiceLabel @index}} Choice:</div><div class="value">{{formatExamCenterName this.examCenterName}}</div>
+            {{/each}}
+          </div>
+        </mj-text>
+
+        <!-- EDUCATION -->
+        <mj-text css-class="card">
+          <div class="section-title">Educational Qualifications</div>
+          <div style="padding-left: 4px;">
+            {{#each education}}
+            <strong>{{formatQualification this.qualification}}</strong><br/>
+            {{#if (eq this.qualification 'MATRICULATION')}}
+              School: {{this.institution}}<br/>
+              Board: {{this.boardOrUniversity}}<br/>
+            {{else if (eq this.qualification 'INTERMEDIATE_OR_DIPLOMA')}}
+              School: {{this.institution}}<br/>
+              Board: {{this.boardOrUniversity}}<br/>
+              {{#if this.subjectOrSpecialization}}Stream: {{this.subjectOrSpecialization}}<br/>{{/if}}
+            {{else if (eq this.qualification 'GRADUATION')}}
+              College: {{this.institution}}<br/>
+              University: {{this.boardOrUniversity}}<br/>
+              {{#if this.subjectOrSpecialization}}Specialization: {{this.subjectOrSpecialization}}<br/>{{/if}}
+            {{/if}}
+            Marks: {{this.marks}}{{#if (eq this.marksType 'PERCENTAGE')}}%{{else}} CGPA{{/if}} | Year: {{this.yearOfPassing}}<br/><br/>
+            {{/each}}
+          </div>
+        </mj-text>
+
+        <!-- DOCUMENTS -->
+        <mj-text css-class="card">
+          <div class="section-title">Uploaded Documents</div>
+          <div class="document-list">
+            {{#each documents}}
+            <div style="margin-bottom: 16px; padding: 12px; border: 1px solid #e5e7eb; border-radius: 6px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                <strong>{{formatDocumentType this.documentType}}</strong>
+                <span style="color: #10b981; font-size: 14px;">✅ Uploaded</span>
+              </div>
+              {{#if (or (eq this.documentType 'PHOTO') (eq this.documentType 'SIGNATURE') (eq this.documentType 'AADHAAR_FRONT') (eq this.documentType 'AADHAAR_BACK'))}}
+              <div style="margin-bottom: 8px;">
+                <a href="{{this.url}}" target="_blank">
+                  <img src="{{this.url}}" alt="{{formatDocumentType this.documentType}}" style="max-width: 150px; max-height: 100px; border-radius: 4px; border: 1px solid #d1d5db; cursor: pointer;" />
+                </a>
+              </div>
+              {{/if}}
+              <a href="{{this.url}}" target="_blank" style="color: #2563eb; text-decoration: none; font-size: 14px; font-weight: 500;">
+                📎 View Full Document
+              </a>
+            </div>
+            {{/each}}
+          </div>
+        </mj-text>
+
+      </mj-column>
+    </mj-section>
+
+  </mj-body>
+</mjml>

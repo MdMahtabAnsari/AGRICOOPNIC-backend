@@ -1,0 +1,144 @@
+import { formSubmittedRepository } from "../repositories/formSubmitted.repository";
+import {InternalServerError,AppError,NotFoundError,BadRequestError,UnauthorisedError} from "../utils/errors";
+import {userRepository} from "../repositories/user.repository";
+import {categoryRepository } from "../repositories/category.repository";
+import { documentRepository } from "../repositories/document.repository";
+import { educationRepository } from "../repositories/education.repository";
+import { examinationPreferenceRepository } from "../repositories/examinationPreference.repository";
+import { familyRepository } from "../repositories/family.repository";
+import { jobPostRepository } from "../repositories/jobPost.repository";
+import { personalDetailRepository } from "../repositories/personalDetail.repository";
+import { addressRepository } from "../repositories/address.repository";
+import { conformationEmailQueue } from "../queue/conformationEmail.queue";
+import serverConfig from "../configs/server.config";
+import { paymentRepository } from "../repositories/payment.repository";
+
+class FormSubmittedService {
+    private async isEveythingSubmitted(userId: string) {
+        try{
+            const categoryRepositoryResult = await categoryRepository.getCategoryByUserId(userId);
+            if(!categoryRepositoryResult) {
+                throw new NotFoundError("Category");
+            }
+            const documentRepositoryResult = await documentRepository.getDocumentByUserId(userId);
+            if(documentRepositoryResult.length <4) {
+                throw new BadRequestError("Documents must be submitted");
+            }
+            const educationRepositoryResult = await educationRepository.getEducationByUserId(userId);
+            if(educationRepositoryResult.length <3) {
+                throw new BadRequestError("Education details must be submitted");
+            }
+            const examinationPreferenceRepositoryResult = await examinationPreferenceRepository.getExaminationPreferenceByUserId(userId);
+            if(examinationPreferenceRepositoryResult.length<2) {
+                throw new BadRequestError("Examination preferences must be submitted");
+            }
+            const familyRepositoryResult = await familyRepository.getFamilyByUserId(userId);
+            if(!familyRepositoryResult) {
+                throw new NotFoundError("Family details");
+            }
+            const jobPostRepositoryResult = await jobPostRepository.getJobPostByUserId(userId);
+            if(!jobPostRepositoryResult) {
+                throw new NotFoundError("Job Post");
+            }
+            const personalDetailRepositoryResult = await personalDetailRepository.getPersonalDetailByUserId(userId);
+            if(!personalDetailRepositoryResult) {
+                throw new NotFoundError("Personal Details");
+            }
+            const addressRepositoryResult = await addressRepository.getAddressByUserId(userId);
+            if(addressRepositoryResult.length<2) {
+                throw new BadRequestError("Address details must be submitted");
+            }
+           return{
+                category: categoryRepositoryResult,
+                documents: documentRepositoryResult,
+                education: educationRepositoryResult,
+                examinationPreferences: examinationPreferenceRepositoryResult,
+                family: familyRepositoryResult,
+                jobPost: jobPostRepositoryResult,
+                personalDetail: personalDetailRepositoryResult,
+                address: addressRepositoryResult
+            };
+           
+        }
+        catch (error) {
+            if (error instanceof AppError) {
+                throw error;
+            }
+            console.error("Error checking if everything is submitted:", error);
+            throw new InternalServerError("Failed to check submission status");
+        }
+    }
+    async makeFormSubmitted(userId: string) {
+        try {
+            const user = await userRepository.getUserById(userId);
+            if (!user) {
+                throw new NotFoundError("User");
+            }
+            const isEveythingSubmittedResult = await this.isEveythingSubmitted(user.id);
+            const isUserPaymentCompleted = await paymentRepository.getUserSuccessfulPayments(userId);
+            if (isUserPaymentCompleted.length === 0) {
+                throw new UnauthorisedError("Payment must be completed before submitting the form");
+            }
+
+            const template={
+                    data:{
+                        user:user,
+                        address: isEveythingSubmittedResult.address,
+                        category: isEveythingSubmittedResult.category,
+                        examinationPreferences: isEveythingSubmittedResult.examinationPreferences,
+                        documents: isEveythingSubmittedResult.documents,
+                        education: isEveythingSubmittedResult.education.map(e => ({
+                            qualification: e.qualification,
+                            institution: e.institution,
+                            boardOrUniversity: e.boardOrUniversity,
+                            marksType: e.marksType,
+                            marks: e.marks,
+                            yearOfPassing: e.yearOfPassing,
+                            subjectOrSpecialization: e.subjectOrSpecialization ?? undefined
+                        })),
+                        family: isEveythingSubmittedResult.family,
+                        jobPost:isEveythingSubmittedResult.jobPost,
+                        personalDetail: isEveythingSubmittedResult.personalDetail,
+                    }
+                }
+            await conformationEmailQueue.addEmailToQueue({
+                to:user.email,
+                template
+            });
+            await conformationEmailQueue.addEmailToQueue({
+                to:serverConfig.SMTP_FROM,
+                template: template
+            });
+
+            return await formSubmittedRepository.makeFormSubmitted(user.id);
+        } catch (error) {
+            if (error instanceof AppError) {
+                throw error;
+            }
+            console.error("Error making form submitted:", error);
+            throw new InternalServerError("Failed to make form submitted");
+        }
+    }
+
+    async getFormSubmittedByUserId(userId: string) {
+        try {
+            const user = await userRepository.getUserById(userId);
+            if (!user) {
+                throw new NotFoundError("User");
+            }
+            const submitted = await formSubmittedRepository.getFormSubmittedByUserId(user.id);
+            if (!submitted) {
+                throw new NotFoundError("Form submission");
+            }
+            return submitted;
+        } catch (error) {
+            if (error instanceof AppError) {
+                throw error;
+            }
+            console.error("Error fetching form submitted:", error);
+            throw new InternalServerError("Failed to fetch form submitted");
+        }
+    }
+}
+
+export const formSubmittedService = new FormSubmittedService();
