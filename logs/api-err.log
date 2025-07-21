@@ -1,0 +1,580 @@
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:57: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:58: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Bull queue error in conformation-email-queue: Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:29:59: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:00: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:00: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:00: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:00: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:00: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:00: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:00: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:00: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:01: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:01: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:01: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}
+2025-07-21T14:30:01: Error connecting to redis Error: getaddrinfo ENOTFOUND singapore-keyvalue.render.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:111:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'singapore-keyvalue.render.com'
+}

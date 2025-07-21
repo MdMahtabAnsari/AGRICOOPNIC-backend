@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Education" ALTER COLUMN "yearOfPassing" SET DATA TYPE TEXT,
+ALTER COLUMN "marks" SET DATA TYPE TEXT;

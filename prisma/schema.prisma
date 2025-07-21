@@ -1,0 +1,224 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma" // This will place generated files outside src
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                     String                  @id @default(uuid())
+  userId                 String                  @unique
+  name                   String
+  email                  String                  @unique
+  phone                  String                  @unique
+  aadhaar                String                  @unique
+  jobPost                JobPost?
+  category               Category?
+  family                 Family?
+  personalDetail         PersonalDetail?
+  address                Address[]
+  education              Education[]
+  documents              Document[]
+  examinationPreferences ExaminationPreference[]
+  formSubmitted          FormSubmitted?
+  createdAt              DateTime                @default(now())
+  updatedAt              DateTime                @updatedAt
+}
+
+model JobPost {
+  id            String      @id @default(uuid())
+  name          JobPostName
+  applicationNo String      @unique
+  userId        String      @unique
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+enum JobPostName {
+  ASSISTANT_BRANCH_MANAGER
+  RELATIONSHIP_MANAGER
+  MULTITASKING_STAFF
+  BLOCK_SUPERVISOR
+}
+
+model Category {
+  id           String       @id @default(uuid())
+  userId       String       @unique
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  categoryType CategoryType
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+enum CategoryType {
+  GENERAL
+  EWS_OR_OBC
+  SC_OR_ST
+  PWBD
+}
+
+model Fees {
+  id           String       @id @default(uuid())
+  categoryType CategoryType
+  amount       Float
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+model Family {
+  id         String   @id @default(uuid())
+  fatherName String
+  motherName String
+  userId     String   @unique
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model PersonalDetail {
+  id          String     @id @default(uuid())
+  userId      String     @unique
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  gender      GenderType
+  nationality String
+  dateOfBirth DateTime
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+enum GenderType {
+  MALE
+  FEMALE
+  OTHER
+}
+
+model Address {
+  id          String      @id @default(uuid())
+  userId      String
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  addressType AddressType
+  addressLine String
+  city        String
+  state       String
+  pinCode     String
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@unique([userId, addressType])
+}
+
+enum AddressType {
+  PERMANENT
+  CORRESPONDENCE
+}
+
+model Education {
+  id                      String        @id @default(uuid())
+  userId                  String
+  user                    User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  qualification           Qualification
+  institution             String
+  boardOrUniversity       String
+  subjectOrSpecialization String?
+  yearOfPassing           String
+  marksType               MarksType
+  marks                   String
+  createdAt               DateTime      @default(now())
+  updatedAt               DateTime      @updatedAt
+
+  @@unique([userId, qualification])
+}
+
+enum Qualification {
+  MATRICULATION
+  INTERMEDIATE_OR_DIPLOMA
+  GRADUATION
+}
+
+enum MarksType {
+  PERCENTAGE
+  CGPA
+}
+
+model Document {
+  id           String       @id @default(uuid())
+  userId       String
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  documentType DocumentType
+  url          String
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  @@unique([userId, documentType])
+}
+
+enum DocumentType {
+  PHOTO
+  SIGNATURE
+  AADHAAR_FRONT
+  AADHAAR_BACK
+}
+
+model ExaminationPreference {
+  id             String                    @id @default(uuid())
+  userId         String
+  user           User                      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  preferenceType ExaminationPreferenceType
+  examCenterName ExamCenterName
+  createdAt      DateTime                  @default(now())
+  updatedAt      DateTime                  @updatedAt
+
+  @@unique([userId, preferenceType])
+  @@unique([userId, preferenceType, examCenterName])
+}
+
+enum ExaminationPreferenceType {
+  PREFERENCE_1
+  PREFERENCE_2
+}
+
+enum ExamCenterName {
+  DELHI_NCR
+  BHUBANESWAR
+  AHMEDABAD
+  KOLKATA
+  HARYANA
+}
+
+model Payment {
+  id            String        @id @default(uuid())
+  userId        String // Clerk user ID like "user_abc123"
+  amount        Float
+  paymentId     String?       @unique
+  orderId       String        @unique
+  category      CategoryType
+  paymentStatus PaymentStatus
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  CANCELLED
+  REFUNDED
+}
+
+model FormSubmitted {
+  id             String   @id @default(uuid())
+  userId         String   @unique
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  submissionDate DateTime @default(now())
+  status         Boolean  @default(false) // true if the form is successfully submitted, false otherwise
+}
