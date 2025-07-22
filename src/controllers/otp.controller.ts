@@ -1,18 +1,14 @@
 import {otpService} from "../services/otp.service";
 import {Request, Response,NextFunction} from "express";
-import {getAuth} from "@clerk/express";
-import {UnauthorisedError} from "../utils/errors";
+import {getUserFromAccessToken} from "../validators/auth.validator";
+
 
 class OtpController {
 
     async sendOtpEmail(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
-        const { email } = req.body;
-        try {
-
+       try {
+            getUserFromAccessToken(req);
+            const {email} = req.body;
             const result = await otpService.sendOtpEmail(email);
             res.status(201).json({
                 message: "OTP sent successfully",
@@ -27,13 +23,11 @@ class OtpController {
     }
 
     async verifyOtp(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
-        const { email, otp } = req.body;
+        
+       
         try {
-
+            getUserFromAccessToken(req);
+            const { email, otp } = req.body;
             const result = await otpService.verifyOtp(email, otp);
             res.status(200).json({
                 message: "OTP verified successfully",

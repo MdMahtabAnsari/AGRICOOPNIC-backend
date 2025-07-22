@@ -1,18 +1,14 @@
 import {categoryService} from "../services/category.service";
 import {Request, Response,NextFunction} from "express";
-import {getAuth} from "@clerk/express";
-import {UnauthorisedError} from "../utils/errors";
+import {getUserFromAccessToken} from "../validators/auth.validator";
+
 
 class CategoryController {
     async createCategory(req: Request, res: Response, next: NextFunction) {
-
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
-        const data = req.body;
+       
         try {
-            const category = await categoryService.createCategory(userId, data);
+            const { userId } = getUserFromAccessToken(req);
+            const category = await categoryService.createCategory(userId, req.body);
             return res.status(201).json({
                 message: "Category created successfully",
                 status: "success",
@@ -26,11 +22,9 @@ class CategoryController {
     }
 
     async getCategoryByUserId(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
+        
         try {
+            const { userId } = getUserFromAccessToken(req);
             const category = await categoryService.getCategoryByUserId(userId);
             return res.status(200).json({
                 message: "Category fetched successfully",
@@ -46,13 +40,10 @@ class CategoryController {
 
     async updateCategory(req: Request, res: Response, next: NextFunction) {
 
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
-        const data = req.body;
+       
         try {
-            const updatedCategory = await categoryService.updateCategory(userId, data);
+            const { userId } = getUserFromAccessToken(req);
+            const updatedCategory = await categoryService.updateCategory(userId, req.body);
             return res.status(200).json({
                 message: "Category updated successfully",
                 status: "success",

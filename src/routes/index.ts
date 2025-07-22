@@ -10,6 +10,7 @@ import examinationPreferenceRouter from "./examinationPreference.route";
 import formSubmittedRouter from "./formSubmitted.route";
 import personalDetailRouter from "./personalDetail.route";
 import paymentRouter from "./payment.route";
+import authRouter from "./auth.route";
 import { Express } from "express";
 import { errorHandler } from "../middlewares/errorHandler.middleware";
 
@@ -26,6 +27,7 @@ const routes = (app: Express) => {
     app.use("/api/personal-details", personalDetailRouter);
     app.use("/api/form-submitted", formSubmittedRouter);
     app.use("/api/payments", paymentRouter);
+    app.use("/api/auth", authRouter);
     app.use(errorHandler);
 }
 

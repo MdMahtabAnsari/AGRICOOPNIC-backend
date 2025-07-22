@@ -1,16 +1,16 @@
 import express from "express";
 import serverConfig from "./configs/server.config";
 import pino from 'pino-http'
-import { clerkMiddleware } from "@clerk/express";
 import routes from "./routes/index";
 import corsConfig from "./configs/cors.config";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 
 const app = express();
 app.use(pino());
 app.use(cors(corsConfig));
-app.use(clerkMiddleware());
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

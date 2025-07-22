@@ -17,6 +17,8 @@ const serverConfig = {
   CORS_METHODS: process.env.CORS_METHODS?.split(',') || [],
   RAZORPAY_KEY_ID: process.env.RAZORPAY_KEY_ID,
   RAZORPAY_KEY_SECRET: process.env.RAZORPAY_KEY_SECRET,
+  NODE_ENV: process.env.NODE_ENV || 'development',
+  JWT_SECRET: process.env.JWT_SECRET || 'defaultsecret',
 };
 
 export default serverConfig;

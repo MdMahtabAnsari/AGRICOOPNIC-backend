@@ -1,15 +1,14 @@
 import { formSubmittedService } from "../services/formSubmitted.service";
-import { getAuth } from "@clerk/express";
+
 import { Request, Response, NextFunction } from "express";
-import { UnauthorisedError } from "../utils/errors";
+import { getUserFromAccessToken } from "../validators/auth.validator";
+
 
 class FormSubmittedController {
     async makeFormSubmitted(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
+        
         try {
+            const { userId } = getUserFromAccessToken(req);
             const result = await formSubmittedService.makeFormSubmitted(userId);
             return res.status(201).json({
                 message: "Form submitted successfully",
@@ -24,11 +23,9 @@ class FormSubmittedController {
     }
 
     async getFormSubmittedByUserId(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
+       
         try {
+            const { userId } = getUserFromAccessToken(req);
             const formSubmitted = await formSubmittedService.getFormSubmittedByUserId(userId);
             return res.status(200).json({
                 message: "Form submitted fetched successfully",

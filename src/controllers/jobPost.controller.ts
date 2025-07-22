@@ -1,19 +1,14 @@
 import {jobPostService} from '../services/jobPost.service';
 import {Request, Response,NextFunction} from 'express';
-import {getAuth} from "@clerk/express";
-import {UnauthorisedError} from "../utils/errors";
+import {getUserFromAccessToken} from '../validators/auth.validator';
 
 class JobPostController {
 
     async createJobPost(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
-        const data = req.body;
+      
         try {
-
-            const result = await jobPostService.createJobPost(userId, data);
+            const { userId } = getUserFromAccessToken(req);
+            const result = await jobPostService.createJobPost(userId, req.body);
             res.status(201).json({
                 message: "Job post created successfully",
                 status: "success",
@@ -27,11 +22,9 @@ class JobPostController {
     }
 
     async getJobPostByUserId(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
+        
         try {
+            const { userId } = getUserFromAccessToken(req);
             const result = await jobPostService.getJobPostByUserId(userId);
             res.status(200).json({
                 message: "Job posts fetched successfully",
@@ -46,14 +39,10 @@ class JobPostController {
     }
 
     async updateJobPost(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
-        const data = req.body;
+       
         try {
-
-            const result = await jobPostService.updateJobPost(userId, data);
+            const { userId } = getUserFromAccessToken(req);
+            const result = await jobPostService.updateJobPost(userId, req.body);
             res.status(200).json({
                 message: "Job post updated successfully",
                 status: "success",

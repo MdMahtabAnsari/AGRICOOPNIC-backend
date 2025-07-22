@@ -1,18 +1,16 @@
 import { paymentService } from "../services/payment.service";
 import {Request, Response,NextFunction} from "express";
-import {getAuth} from "@clerk/express";
-import {UnauthorisedError} from "../utils/errors";
+import { getUserFromAccessToken } from "../validators/auth.validator";
+
 
 class PaymentController {
 
     async createPayment(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
-        const paymentData = req.body;
+        
+        
         try {
-            const result = await paymentService.createPayment(userId, paymentData);
+            const { userId } = getUserFromAccessToken(req);
+            const result = await paymentService.createPayment(userId, req.body);
             res.status(201).json({
                 message: "Payment created successfully",
                 status: "success",
@@ -26,12 +24,10 @@ class PaymentController {
     }
 
     async verifyPayment(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
+        
     
         try {
+            getUserFromAccessToken(req);
             const result = await paymentService.verifyPayment(req.body);
             res.status(200).json({
                 message: "Payment verified successfully",
@@ -46,11 +42,9 @@ class PaymentController {
     }
 
     async getUserSuccessfulPayments(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
+        
         try {
+            const { userId } = getUserFromAccessToken(req);
             const payments = await paymentService.getUserSuccessfulPayments(userId);
             res.status(200).json({
                 message: "User successful payments fetched successfully",

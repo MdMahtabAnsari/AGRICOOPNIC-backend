@@ -1,16 +1,14 @@
 import {personalDetailService} from "../services/personalDetail.service";
 import {Request, Response,NextFunction} from "express";
-import {getAuth} from "@clerk/express";
-import {UnauthorisedError} from "../utils/errors";
+import { getUserFromAccessToken } from "../validators/auth.validator";
+
 
 class  PersonalDetailController {
     async createPersonalDetail(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            throw new UnauthorisedError("User not authenticated");
-        }
-        const data = req.body;
+        
         try {
+            const { userId } = getUserFromAccessToken(req);
+            const data = req.body;
             const personalDetail = await personalDetailService.createPersonalDetail(userId, data);
             res.status(201).json({
                 message: "Personal detail created successfully",
@@ -25,12 +23,9 @@ class  PersonalDetailController {
     }
 
     async getPersonalDetailByUserId(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            throw new UnauthorisedError("User not authenticated");
-        }
+       
         try {
-
+            const { userId } = getUserFromAccessToken(req);
             const personalDetail = await personalDetailService.getPersonalDetailByUserId(userId);
             res.status(200).json({
                 message: "Personal detail fetched successfully",
@@ -45,13 +40,10 @@ class  PersonalDetailController {
     }
 
     async updatePersonalDetail(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            throw new UnauthorisedError("User not authenticated");
-        }
-        const data = req.body;
+        
         try {
-
+            const { userId } = getUserFromAccessToken(req);
+            const data = req.body;
             const updatedPersonalDetail = await personalDetailService.updatePersonalDetail(userId, data);
             res.status(200).json({
                 message: "Personal detail updated successfully",

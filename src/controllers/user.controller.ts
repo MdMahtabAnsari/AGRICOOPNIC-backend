@@ -1,16 +1,13 @@
 import { userService } from "../services/user.service";
 import { Request, Response,NextFunction } from "express";
-import {getAuth} from '@clerk/express';
-import { UnauthorisedError } from "../utils/errors";
 import { AadhaarObject,EmailObject,PhoneObject } from "../utils/schemas/common.schema";
+import { getUserFromAccessToken } from "../validators/auth.validator";
 
 class UserController {
     async getUser(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
+        
         try{
+            const { userId } = getUserFromAccessToken(req);
             const user = await userService.getUserById(userId);
             res.status(200).json({
                 message: "User fetched successfully",
@@ -26,11 +23,9 @@ class UserController {
     }
 
     async createUser(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
+        
         try {
+            const { userId } = getUserFromAccessToken(req);
             const user = await userService.createUser(userId, req.body);
             res.status(201).json({
                 message: "User created successfully",
@@ -46,11 +41,9 @@ class UserController {
     }
 
     async updateUser(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
+        
         try {
+            const { userId } = getUserFromAccessToken(req);
             const user = await userService.updateUser(userId, req.body);
             res.status(200).json({
                 message: "User updated successfully",
@@ -65,12 +58,10 @@ class UserController {
     }
 
     async isEmailExists(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
-        const { email } = req.query as EmailObject;
+       
         try {
+           getUserFromAccessToken(req);
+            const { email } = req.query as EmailObject;
             const exists = await userService.isEmailExists(email);
             res.status(200).json({
                 message: "Email existence checked successfully",
@@ -85,12 +76,10 @@ class UserController {
         }
     }
     async isPhoneExists(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
-        const { phone } = req.query as PhoneObject;
+    
         try {
+            getUserFromAccessToken(req);
+            const { phone } = req.query as PhoneObject;
             const exists = await userService.isPhoneExists(phone);
             res.status(200).json({
                 message: "Phone existence checked successfully",
@@ -105,12 +94,10 @@ class UserController {
         }
     }
     async isAadhaarExists(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
-        const { aadhaar } = req.query as AadhaarObject;
+       
         try {
+            getUserFromAccessToken(req);
+            const { aadhaar } = req.query as AadhaarObject;
             const exists = await userService.isAadhaarExists(aadhaar);
             res.status(200).json({
                 message: "Aadhaar existence checked successfully",
@@ -126,11 +113,9 @@ class UserController {
     }
 
     async deleteUser(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
+        
         try {
+            const { userId } = getUserFromAccessToken(req);
             await userService.deleteUser(userId);
             res.status(200).json({
                 message: "User deleted successfully",

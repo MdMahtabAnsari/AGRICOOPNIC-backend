@@ -22,10 +22,9 @@ module.exports = {
                 CORS_CREDENTIALS: process.env.CORS_CREDENTIALS,
                 CORS_HEADERS: process.env.CORS_HEADERS,
                 CORS_METHODS: process.env.CORS_METHODS,
-                CLERK_PUBLISHABLE_KEY: process.env.CLERK_PUBLISHABLE_KEY,
-                CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
                 RAZORPAY_KEY_ID: process.env.RAZORPAY_KEY_ID,
                 RAZORPAY_KEY_SECRET: process.env.RAZORPAY_KEY_SECRET,
+                JWT_SECRET: process.env.JWT_SECRET,
                 APP_TYPE: "api"
             },
             error_file: "logs/api-err.log",
@@ -52,10 +51,9 @@ module.exports = {
                 SMTP_USER: process.env.SMTP_USER,
                 SMTP_PASSWORD: process.env.SMTP_PASSWORD,
                 SMTP_FROM: process.env.SMTP_FROM,
-                CLERK_PUBLISHABLE_KEY: process.env.CLERK_PUBLISHABLE_KEY,
-                CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
                 RAZORPAY_KEY_ID: process.env.RAZORPAY_KEY_ID,
                 RAZORPAY_KEY_SECRET: process.env.RAZORPAY_KEY_SECRET,
+                JWT_SECRET: process.env.JWT_SECRET,
                 APP_TYPE: "worker"
             },
             error_file: "logs/worker-err.log",

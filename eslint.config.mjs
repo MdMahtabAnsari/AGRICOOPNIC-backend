@@ -11,7 +11,8 @@ export default tslint.config(
         ignores: [
             'node_modules',
             'dist',
-            'generated/prisma'
+            'generated/prisma',
+            'ecosystem.config.js'
         ]
     }
 );

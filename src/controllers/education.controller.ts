@@ -1,15 +1,12 @@
-import { getAuth } from "@clerk/express";
 import { Request,Response,NextFunction } from "express";
-import { UnauthorisedError } from "../utils/errors";
 import { educationService } from "../services/education.service";
+import { getUserFromAccessToken } from "../validators/auth.validator";
 
 class EducationController {
     async createEducation(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
+        
         try {
+            const { userId } = getUserFromAccessToken(req);
             const data = req.body;
             const education = await educationService.createEducation(userId, data);
             res.status(201).json({
@@ -25,11 +22,9 @@ class EducationController {
     }
 
     async getEducationByUserId(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
+        
         try {
+            const { userId } = getUserFromAccessToken(req);
             const education = await educationService.getEducationByUserId(userId);
             res.status(200).json({
                 message: "Education fetched successfully",
@@ -44,11 +39,9 @@ class EducationController {
     }
 
     async updateEducation(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
+       
         try {
+            const { userId } = getUserFromAccessToken(req);
             const data = req.body;
             const updatedEducation = await educationService.updateEducation(userId, data);
             res.status(200).json({

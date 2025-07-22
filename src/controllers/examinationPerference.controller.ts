@@ -1,15 +1,13 @@
 import { examinationPreferenceService } from "../services/examinationPreference.service";
 import {Request,Response,NextFunction} from "express";
-import { getAuth } from "@clerk/express";
-import { UnauthorisedError } from "../utils/errors";
+import { getUserFromAccessToken } from "../validators/auth.validator";
+
 
 class ExaminationPreferenceController {
     async createExaminationPreference(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
+       
         try {
+            const { userId } = getUserFromAccessToken(req);
             const data = req.body;
             const preference = await examinationPreferenceService.createExaminationPreference(userId, data);
             res.status(201).json({
@@ -25,11 +23,9 @@ class ExaminationPreferenceController {
     }
 
     async getExaminationPreference(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
+        
         try {
+            const { userId } = getUserFromAccessToken(req);
             const preferences = await examinationPreferenceService.getExaminationPreferenceByUserId(userId);
             res.status(200).json({
                 message: "Examination preferences fetched successfully",
@@ -44,11 +40,9 @@ class ExaminationPreferenceController {
     }
 
     async updateExaminationPreference(req: Request, res: Response, next: NextFunction) {
-        const { userId } = getAuth(req);
-        if (!userId) {
-            return next(new UnauthorisedError("User not authenticated"));
-        }
+        
         try {
+            const { userId } = getUserFromAccessToken(req);
             const data = req.body;
             const updatedPreference = await examinationPreferenceService.updateExaminationPreference(userId, data);
             res.status(200).json({
