@@ -1,12 +1,12 @@
-import {emailService} from "../email/email.service";
-import {InternalServerError,AppError,NotFoundError,ForbiddenError} from "../utils/errors";
+import { emailService } from "../email/email.service";
+import { InternalServerError, AppError, NotFoundError, ForbiddenError } from "../utils/errors";
 import otpGenerator from 'otp-generator'
-import {otpRedis} from "../redis/otp.redis";
+import { otpRedis } from "../redis/otp.redis";
 
 class OtpService {
     private generateOtp(length = 6): string {
         try {
-            return otpGenerator.generate(length, { upperCaseAlphabets:false, specialChars: false,lowerCaseAlphabets:false, digits: true });
+            return otpGenerator.generate(length, { upperCaseAlphabets: false, specialChars: false, lowerCaseAlphabets: false, digits: true });
         } catch (error) {
             console.error('Error generating OTP:', error);
             throw new InternalServerError('Failed to generate OTP');
@@ -15,7 +15,7 @@ class OtpService {
     async sendOtpEmail(email: string) {
         try {
             const otp = this.generateOtp();
-            const otpStored = await otpRedis.setOTP(email,otp);
+            const otpStored = await otpRedis.setOTP(email, otp);
             if (!otpStored) {
                 throw new InternalServerError('Failed to store OTP in Redis');
             }
@@ -32,7 +32,7 @@ class OtpService {
 
             return true;
         } catch (error) {
-           if( error instanceof AppError) {
+            if (error instanceof AppError) {
                 throw error;
             }
             console.error('Error sending OTP email:', error);

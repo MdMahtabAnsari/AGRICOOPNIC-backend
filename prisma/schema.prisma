@@ -64,10 +64,12 @@ model JobPost {
 }
 
 enum JobPostName {
-  ASSISTANT_BRANCH_MANAGER
-  RELATIONSHIP_MANAGER
-  MULTITASKING_STAFF
-  BLOCK_SUPERVISOR
+  MTS
+  SUPERVISOR
+  CLERK
+  ASSISTANT_AGRICULTURE_OFFICER
+  AGRICULTURE_OFFICER
+  FIELD_OFFICER
 }
 
 model Category {
@@ -83,7 +85,6 @@ enum CategoryType {
   GENERAL
   EWS_OR_OBC
   SC_OR_ST
-  PWBD
 }
 
 model Fees {
@@ -204,14 +205,20 @@ model ExaminationPreference {
 enum ExaminationPreferenceType {
   PREFERENCE_1
   PREFERENCE_2
+  PREFERENCE_3
 }
 
 enum ExamCenterName {
   DELHI_NCR
-  BHUBANESWAR
+  LUCKNOW
   AHMEDABAD
+  BHOPAL
+  MUMBAI
   KOLKATA
-  HARYANA
+  BHUBANESWAR
+  RANCHI
+  PATNA
+  BANGLORE
 }
 
 model Payment {

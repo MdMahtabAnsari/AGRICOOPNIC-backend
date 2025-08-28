@@ -1,11 +1,11 @@
-import {personalDetailService} from "../services/personalDetail.service";
-import {Request, Response,NextFunction} from "express";
+import { personalDetailService } from "../services/personalDetail.service";
+import { Request, Response, NextFunction } from "express";
 import { getUserFromAccessToken } from "../validators/auth.validator";
 
 
-class  PersonalDetailController {
+class PersonalDetailController {
     async createPersonalDetail(req: Request, res: Response, next: NextFunction) {
-        
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const data = req.body;
@@ -23,7 +23,7 @@ class  PersonalDetailController {
     }
 
     async getPersonalDetailByUserId(req: Request, res: Response, next: NextFunction) {
-       
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const personalDetail = await personalDetailService.getPersonalDetailByUserId(userId);
@@ -40,7 +40,7 @@ class  PersonalDetailController {
     }
 
     async updatePersonalDetail(req: Request, res: Response, next: NextFunction) {
-        
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const data = req.body;

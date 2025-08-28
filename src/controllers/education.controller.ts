@@ -1,10 +1,10 @@
-import { Request,Response,NextFunction } from "express";
+import { Request, Response, NextFunction } from "express";
 import { educationService } from "../services/education.service";
 import { getUserFromAccessToken } from "../validators/auth.validator";
 
 class EducationController {
     async createEducation(req: Request, res: Response, next: NextFunction) {
-        
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const data = req.body;
@@ -22,7 +22,7 @@ class EducationController {
     }
 
     async getEducationByUserId(req: Request, res: Response, next: NextFunction) {
-        
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const education = await educationService.getEducationByUserId(userId);
@@ -39,7 +39,7 @@ class EducationController {
     }
 
     async updateEducation(req: Request, res: Response, next: NextFunction) {
-       
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const data = req.body;

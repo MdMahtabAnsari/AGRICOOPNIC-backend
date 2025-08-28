@@ -29,10 +29,12 @@ class EmailTemplateService {
 
         Handlebars.registerHelper('formatJobPost', function (jobPostName: string) {
             const jobPostMap: Record<string, string> = {
-                'ASSISTANT_BRANCH_MANAGER': 'Assistant Branch Manager',
-                'RELATIONSHIP_MANAGER': 'Relationship Manager',
-                'MULTITASKING_STAFF': 'Multitasking Staff',
-                'BLOCK_SUPERVISOR': 'Block Supervisor'
+                'MTS': 'Multi Tasking Staff',
+                'SUPERVISOR': 'Supervisor',
+                'CLERK': 'Clerk',
+                'ASSISTANT_AGRICULTURE_OFFICER': 'Assistant Agriculture Officer',
+                'AGRICULTURE_OFFICER': 'Agriculture Officer',
+                'FIELD_OFFICER': 'Field Officer'
             };
             return jobPostMap[jobPostName] || jobPostName;
         });
@@ -41,7 +43,6 @@ class EmailTemplateService {
             const categoryMap: Record<string, string> = {
                 'EWS_OR_OBC': 'EWS/OBC',
                 'SC_OR_ST': 'SC/ST',
-                'PWBD': 'PWBD',
                 'GENERAL': 'General'
             };
             return categoryMap[category] || category;
@@ -64,10 +65,15 @@ class EmailTemplateService {
         Handlebars.registerHelper('formatExamCenterName', function (examCenterName: string) {
             const examCenterMap: Record<string, string> = {
                 'DELHI_NCR': 'Delhi NCR',
-                'BHUBANESWAR': 'Bhubaneswar',
+                'LUCKNOW': 'Lucknow',
                 'AHMEDABAD': 'Ahmedabad',
+                'BHOPAL': 'Bhopal',
+                'MUMBAI': 'Mumbai',
                 'KOLKATA': 'Kolkata',
-                'HARYANA': 'Haryana'
+                'BHUBANESWAR': 'Bhubaneswar',
+                'RANCHI': 'Ranchi',
+                'PATNA': 'Patna',
+                'BANGLORE': 'Bangalore'
             };
             return examCenterMap[examCenterName] || examCenterName;
         });
@@ -89,13 +95,13 @@ class EmailTemplateService {
             return documentTypeMap[documentType] || documentType;
         });
         Handlebars.registerHelper('choiceLabel', function (index: number) {
-            const labels = ['First', 'Second'];
+            const labels = ['First', 'Second','Third'];
             return labels[index] || `${index + 1}th`;
         })
-         Handlebars.registerHelper('eq', function (a: string | number | boolean, b: string | number | boolean) {
+        Handlebars.registerHelper('eq', function (a: string | number | boolean, b: string | number | boolean) {
             return a === b;
         });
-        
+
         // Fix: Proper Handlebars helper signature
         Handlebars.registerHelper('or', function (this: unknown, ...args: unknown[]) {
             // The last argument is always the Handlebars options object

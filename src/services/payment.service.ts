@@ -1,8 +1,10 @@
 import { paymentRepository } from "../repositories/payment.repository";
-import {InternalServerError,AppError,ForbiddenError, BadRequestError,NotFoundError} from "../utils/errors";
-import {RoutePaymentSchema,VerifyPaymentSchema } from "../utils/schemas/payment.schema";
+import { InternalServerError, AppError, ForbiddenError, BadRequestError, NotFoundError } from "../utils/errors";
+import { RoutePaymentSchema, VerifyPaymentSchema } from "../utils/schemas/payment.schema";
 import { razorpayService } from "../razorpay/razorpay";
 import { feesRepository } from "../repositories/fees.repository";
+import { phonePeService } from "../phonepe/phonepe";
+import { randomUUID } from "crypto";
 
 
 class PaymentService {
@@ -14,12 +16,12 @@ class PaymentService {
     async createPayment(userId: string, paymentData: RoutePaymentSchema) {
         try {
             const category = await feesRepository.getFeesByCategory(paymentData.category);
-            if(!category) {
+            if (!category) {
                 throw new BadRequestError("Invalid category type");
             }
             if (category.amount === 0) {
                 const freeOrderId = `free_${userId}_${Date.now()}`;
-                const payment =  await paymentRepository.createPayment(userId, {
+                const payment = await paymentRepository.createPayment(userId, {
                     amount: 0,
                     paymentId: `free_payment_${freeOrderId}`,
                     orderId: freeOrderId,
@@ -27,7 +29,7 @@ class PaymentService {
                     paymentStatus: 'COMPLETED',
                 });
                 return {
-                   order: {
+                    order: {
                         id: freeOrderId,
                         amount: 0,
                         currency: "INR",
@@ -40,7 +42,7 @@ class PaymentService {
             }
             const receipt = this.generateShortReceipt(userId);
 
-            const order = await razorpayService.createOrder(category.amount, "INR", receipt,{
+            const order = await razorpayService.createOrder(category.amount, "INR", receipt, {
                 name: paymentData.name,
                 email: paymentData.email,
                 contact: paymentData.contact
@@ -50,7 +52,7 @@ class PaymentService {
                 throw new InternalServerError("Payment initiation failed");
             }
 
-            const payment=await paymentRepository.createPayment(userId, {
+            const payment = await paymentRepository.createPayment(userId, {
                 amount: category.amount,
                 orderId: order.id,
                 category: paymentData.category,
@@ -77,7 +79,7 @@ class PaymentService {
                 throw new ForbiddenError("Invalid payment signature");
             }
 
-            const updatedPayment = await paymentRepository.updatePaymentIdAndStatus(data.orderId, data.paymentId,'COMPLETED');
+            const updatedPayment = await paymentRepository.updatePaymentIdAndStatus(data.orderId, data.paymentId, 'COMPLETED');
 
             return updatedPayment;
         } catch (error) {
@@ -91,7 +93,7 @@ class PaymentService {
     async getUserSuccessfulPayments(userId: string) {
         try {
             const payments = await paymentRepository.getUserSuccessfulPayments(userId);
-           if(payments.length === 0) {
+            if (payments.length === 0) {
                 throw new NotFoundError("successful payments");
             }
             return payments;
@@ -103,8 +105,76 @@ class PaymentService {
             throw new InternalServerError("Failed to fetch user successful payments");
         }
     }
-}
 
+    async createPhonepePayment(userId: string, paymentData: RoutePaymentSchema) {
+        try {
+            const category = await feesRepository.getFeesByCategory(paymentData.category);
+            if (!category) {
+                throw new BadRequestError("Invalid category type");
+            }
+
+            if (category.amount === 0) {
+                const orderId = randomUUID();
+                const payment = await paymentRepository.createPayment(userId, {
+                    amount: 0,
+                    paymentId: orderId,
+                    orderId: orderId,
+                    category: paymentData.category,
+                    paymentStatus: 'COMPLETED',
+                });
+                return {
+                    payment,
+                    isFree: true
+                }
+            }
+
+            const order = await phonePeService.createOrder(category.amount, {
+                name: paymentData.name,
+                email: paymentData.email,
+                contact: paymentData.contact
+            });
+
+            if (!order) {
+                return new InternalServerError("Payment initiation failed");
+            }
+
+            const payment = await paymentRepository.createPayment(userId, {
+                amount: category.amount,
+                orderId: order.orderId,
+                category: paymentData.category,
+                paymentStatus: 'PENDING',
+            });
+
+            return {
+                checkoutPageUrl: order.checkoutPageUrl,
+                payment,
+                isFree: false
+            }
+
+
+        } catch (error) {
+            if (error instanceof AppError) {
+                throw error;
+            }
+            throw new InternalServerError("Payment processing failed");
+        }
+    }
+
+    async verifyPhonepePayment(orderId: string) {
+        try {
+            const status = await phonePeService.verifyPayment(orderId);
+            if (status.state === 'COMPLETED') {
+                return await paymentRepository.updatePaymentIdAndStatus(orderId, status.paymentDetails[0].transactionId, 'COMPLETED');
+            }
+            return null;
+        } catch (error) {
+            if (error instanceof AppError) {
+                throw error;
+            }
+            throw new InternalServerError("Payment verification failed");
+        }
+    }
+}
 export const paymentService = new PaymentService();
 
 

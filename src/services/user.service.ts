@@ -1,5 +1,5 @@
 import { userRepository } from "../repositories/user.repository";
-import { AppError,InternalServerError,NotFoundError } from "../utils/errors";
+import { AppError, InternalServerError, NotFoundError } from "../utils/errors";
 import { UserSchema } from "../utils/schemas/user.schema";
 
 class UserService {
@@ -7,7 +7,7 @@ class UserService {
         try {
             return await userRepository.createUser(userId, data);
         } catch (error) {
-           if(error instanceof AppError) {
+            if (error instanceof AppError) {
                 throw error;
             }
             throw new InternalServerError("Failed to create user");

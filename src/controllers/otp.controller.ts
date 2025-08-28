@@ -1,14 +1,14 @@
-import {otpService} from "../services/otp.service";
-import {Request, Response,NextFunction} from "express";
-import {getUserFromAccessToken} from "../validators/auth.validator";
+import { otpService } from "../services/otp.service";
+import { Request, Response, NextFunction } from "express";
+import { getUserFromAccessToken } from "../validators/auth.validator";
 
 
 class OtpController {
 
     async sendOtpEmail(req: Request, res: Response, next: NextFunction) {
-       try {
+        try {
             getUserFromAccessToken(req);
-            const {email} = req.body;
+            const { email } = req.body;
             const result = await otpService.sendOtpEmail(email);
             res.status(201).json({
                 message: "OTP sent successfully",
@@ -23,8 +23,8 @@ class OtpController {
     }
 
     async verifyOtp(req: Request, res: Response, next: NextFunction) {
-        
-       
+
+
         try {
             getUserFromAccessToken(req);
             const { email, otp } = req.body;

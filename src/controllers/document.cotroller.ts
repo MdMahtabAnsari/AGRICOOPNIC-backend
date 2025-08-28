@@ -1,10 +1,10 @@
 import { documentService } from "../services/document.service";
-import { Request,Response,NextFunction } from "express";
+import { Request, Response, NextFunction } from "express";
 import { getUserFromAccessToken } from "../validators/auth.validator";
 
 class DocumentController {
     async createDocument(req: Request, res: Response, next: NextFunction) {
-       
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const document = await documentService.createDocument(userId, req.body);
@@ -21,7 +21,7 @@ class DocumentController {
     }
 
     async getDocumentByUserId(req: Request, res: Response, next: NextFunction) {
-       
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const documents = await documentService.getDocumentByUserId(userId);
@@ -38,8 +38,8 @@ class DocumentController {
     }
 
     async updateDocument(req: Request, res: Response, next: NextFunction) {
-        
-        try {   
+
+        try {
             const { userId } = getUserFromAccessToken(req);
             const updatedDocument = await documentService.updateDocument(userId, req.body);
             res.status(200).json({

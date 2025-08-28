@@ -1,11 +1,11 @@
-import {categoryService} from "../services/category.service";
-import {Request, Response,NextFunction} from "express";
-import {getUserFromAccessToken} from "../validators/auth.validator";
+import { categoryService } from "../services/category.service";
+import { Request, Response, NextFunction } from "express";
+import { getUserFromAccessToken } from "../validators/auth.validator";
 
 
 class CategoryController {
     async createCategory(req: Request, res: Response, next: NextFunction) {
-       
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const category = await categoryService.createCategory(userId, req.body);
@@ -22,7 +22,7 @@ class CategoryController {
     }
 
     async getCategoryByUserId(req: Request, res: Response, next: NextFunction) {
-        
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const category = await categoryService.getCategoryByUserId(userId);
@@ -40,7 +40,7 @@ class CategoryController {
 
     async updateCategory(req: Request, res: Response, next: NextFunction) {
 
-       
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const updatedCategory = await categoryService.updateCategory(userId, req.body);

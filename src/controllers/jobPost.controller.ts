@@ -1,11 +1,11 @@
-import {jobPostService} from '../services/jobPost.service';
-import {Request, Response,NextFunction} from 'express';
-import {getUserFromAccessToken} from '../validators/auth.validator';
+import { jobPostService } from '../services/jobPost.service';
+import { Request, Response, NextFunction } from 'express';
+import { getUserFromAccessToken } from '../validators/auth.validator';
 
 class JobPostController {
 
     async createJobPost(req: Request, res: Response, next: NextFunction) {
-      
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const result = await jobPostService.createJobPost(userId, req.body);
@@ -22,7 +22,7 @@ class JobPostController {
     }
 
     async getJobPostByUserId(req: Request, res: Response, next: NextFunction) {
-        
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const result = await jobPostService.getJobPostByUserId(userId);
@@ -39,7 +39,7 @@ class JobPostController {
     }
 
     async updateJobPost(req: Request, res: Response, next: NextFunction) {
-       
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const result = await jobPostService.updateJobPost(userId, req.body);

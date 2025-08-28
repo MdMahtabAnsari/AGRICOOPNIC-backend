@@ -38,3 +38,9 @@ export const verifyPaymentSchema = z.object({
 });
 
 export type VerifyPaymentSchema = z.infer<typeof verifyPaymentSchema>;
+
+export const orderIdObject = z.object({
+    orderId: z.uuid()
+});
+
+export type OrderIdObject = z.infer<typeof orderIdObject>;

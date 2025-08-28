@@ -1,10 +1,10 @@
 import { prisma } from "../configs/prisma.config";
 import { Prisma } from "../../generated/prisma";
-import { InternalServerError,NotFoundError,BadRequestError,ConflictError } from "../utils/errors";
-import {CategorySchema} from "../utils/schemas/category.schema";
+import { InternalServerError, NotFoundError, BadRequestError, ConflictError } from "../utils/errors";
+import { CategorySchema } from "../utils/schemas/category.schema";
 
 class CategoryRepository {
-    async createCategory(userId:string,data: CategorySchema) {
+    async createCategory(userId: string, data: CategorySchema) {
         try {
             return await prisma.category.create({
                 data: {
@@ -45,7 +45,7 @@ class CategoryRepository {
         }
     }
 
-    async updateCategory(userId:string, data: CategorySchema) {
+    async updateCategory(userId: string, data: CategorySchema) {
         try {
             return await prisma.category.update({
                 where: { userId: userId },
@@ -55,7 +55,7 @@ class CategoryRepository {
             console.error("Error updating category:", error);
             if (error instanceof Prisma.PrismaClientKnownRequestError) {
                 if (error.code === 'P2002') {
-                   throw new ConflictError('Category');
+                    throw new ConflictError('Category');
                 } else if (error.code === 'P2003') {
                     throw new BadRequestError("Invalid data provided");
                 }

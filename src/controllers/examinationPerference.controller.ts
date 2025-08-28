@@ -1,11 +1,11 @@
 import { examinationPreferenceService } from "../services/examinationPreference.service";
-import {Request,Response,NextFunction} from "express";
+import { Request, Response, NextFunction } from "express";
 import { getUserFromAccessToken } from "../validators/auth.validator";
 
 
 class ExaminationPreferenceController {
     async createExaminationPreference(req: Request, res: Response, next: NextFunction) {
-       
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const data = req.body;
@@ -23,7 +23,7 @@ class ExaminationPreferenceController {
     }
 
     async getExaminationPreference(req: Request, res: Response, next: NextFunction) {
-        
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const preferences = await examinationPreferenceService.getExaminationPreferenceByUserId(userId);
@@ -40,7 +40,7 @@ class ExaminationPreferenceController {
     }
 
     async updateExaminationPreference(req: Request, res: Response, next: NextFunction) {
-        
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const data = req.body;

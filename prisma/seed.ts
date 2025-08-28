@@ -21,11 +21,7 @@ async function main() {
     {
       categoryType: CategoryType.SC_OR_ST,
       amount: 100.0,
-    },
-    {
-      categoryType: CategoryType.PWBD,
-      amount: 0.0,
-    },
+    }
   ]
 
   // Create fee records - Fix: Use T[] instead of Array<T>

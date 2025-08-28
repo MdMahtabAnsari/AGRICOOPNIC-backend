@@ -8,8 +8,8 @@ class NodeMailerClient {
     this.transporter.verify((error, success) => {
       if (error) {
         console.error('Error verifying email transporter:', error);
-      } 
-      else if( success) {
+      }
+      else if (success) {
         console.log('Email transporter is ready to send emails.');
       }
     });

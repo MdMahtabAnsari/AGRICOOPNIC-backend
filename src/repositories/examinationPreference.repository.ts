@@ -1,6 +1,6 @@
 import { prisma } from "../configs/prisma.config";
 import { Prisma } from "../../generated/prisma";
-import { InternalServerError,NotFoundError,BadRequestError,ConflictError } from "../utils/errors";
+import { InternalServerError, NotFoundError, BadRequestError, ConflictError } from "../utils/errors";
 import { ExaminationPreferenceSchema } from "../utils/schemas/examinationPreference.schema";
 
 class ExaminationPreferenceRepository {
@@ -27,16 +27,16 @@ class ExaminationPreferenceRepository {
             throw new InternalServerError("Failed to create examination preference");
         }
     }
-    
+
     async getExaminationPreferenceByUserId(userId: string) {
         try {
             return await prisma.examinationPreference.findMany({
                 where: { userId }
             });
-            
+
         } catch (error) {
             console.error("Error fetching examination preference:", error);
-            
+
             throw new InternalServerError("Failed to fetch examination preference");
         }
     }
@@ -49,7 +49,7 @@ class ExaminationPreferenceRepository {
             });
         } catch (error) {
             console.error("Error updating examination preference:", error);
-            if( error instanceof Prisma.PrismaClientKnownRequestError) {
+            if (error instanceof Prisma.PrismaClientKnownRequestError) {
                 if (error.code === 'P2002') {
                     throw new ConflictError("Examination preference already exists");
                 } else if (error.code === 'P2003') {
@@ -59,7 +59,7 @@ class ExaminationPreferenceRepository {
         }
     }
 
-    async getExaminationPreferenceByPreferenceTypeAndUserId(preferenceType:ExaminationPreferenceSchema['preferenceType'], userId: string) {
+    async getExaminationPreferenceByPreferenceTypeAndUserId(preferenceType: ExaminationPreferenceSchema['preferenceType'], userId: string) {
         try {
             return await prisma.examinationPreference.findFirst({
                 where: { preferenceType, userId }

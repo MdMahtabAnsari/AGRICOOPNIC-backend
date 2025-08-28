@@ -3,6 +3,7 @@ import { Prisma } from "../../generated/prisma";
 import { InternalServerError, NotFoundError, BadRequestError, ConflictError } from "../utils/errors";
 import { PaymentSchema } from "../utils/schemas/payment.schema";
 import type { PaymentStatusEnum } from "../utils/schemas/payment.schema";
+import { CategoryTypeEnum } from "../utils/schemas/category.schema";
 
 
 class PaymentRepository {
@@ -56,6 +57,18 @@ class PaymentRepository {
         } catch (error) {
             console.error("Error fetching user payments:", error);
             throw new InternalServerError("Failed to fetch user payments");
+        }
+    }
+
+    async getUserSuccessfulPaymentWithCategory(userId: string, category: CategoryTypeEnum) {
+        try {
+            const payments = await prisma.payment.findMany({
+                where: { userId, category, paymentStatus: 'COMPLETED' },
+            });
+            return payments;
+        } catch (error) {
+            console.error("Error fetching user payments with category:", error);
+            throw new InternalServerError("Failed to fetch user payments with category");
         }
     }
 

@@ -1,6 +1,6 @@
 import { jwtService } from "./jwt.service";
 import { authRepository } from "../repositories/auth.repository";
-import {InternalServerError,AppError,NotFoundError,UnauthorisedError} from "../utils/errors";
+import { InternalServerError, AppError, NotFoundError, UnauthorisedError } from "../utils/errors";
 import { AuthSchema } from "../utils/schemas/auth.schema";
 
 class AuthService {
@@ -26,7 +26,7 @@ class AuthService {
             if (!isUserExists) {
                 throw new NotFoundError("User not found");
             }
-            if(data.password !== isUserExists.password) {
+            if (data.password !== isUserExists.password) {
                 throw new UnauthorisedError("Invalid password");
             }
             // Here you would typically verify the password, but that logic is not included in the original code.
@@ -42,7 +42,7 @@ class AuthService {
         }
     }
 
-    async refresh(userId:string) {
+    async refresh(userId: string) {
         try {
             const isUserExists = await authRepository.getUserById(userId);
             if (!isUserExists) {
@@ -89,7 +89,7 @@ class AuthService {
         }
     }
 
-    
+
 }
 
 export const authService = new AuthService();

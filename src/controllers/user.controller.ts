@@ -1,12 +1,12 @@
 import { userService } from "../services/user.service";
-import { Request, Response,NextFunction } from "express";
-import { AadhaarObject,EmailObject,PhoneObject } from "../utils/schemas/common.schema";
+import { Request, Response, NextFunction } from "express";
+import { AadhaarObject, EmailObject, PhoneObject } from "../utils/schemas/common.schema";
 import { getUserFromAccessToken } from "../validators/auth.validator";
 
 class UserController {
     async getUser(req: Request, res: Response, next: NextFunction) {
-        
-        try{
+
+        try {
             const { userId } = getUserFromAccessToken(req);
             const user = await userService.getUserById(userId);
             res.status(200).json({
@@ -23,7 +23,7 @@ class UserController {
     }
 
     async createUser(req: Request, res: Response, next: NextFunction) {
-        
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const user = await userService.createUser(userId, req.body);
@@ -41,7 +41,7 @@ class UserController {
     }
 
     async updateUser(req: Request, res: Response, next: NextFunction) {
-        
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const user = await userService.updateUser(userId, req.body);
@@ -58,9 +58,9 @@ class UserController {
     }
 
     async isEmailExists(req: Request, res: Response, next: NextFunction) {
-       
+
         try {
-           getUserFromAccessToken(req);
+            getUserFromAccessToken(req);
             const { email } = req.query as EmailObject;
             const exists = await userService.isEmailExists(email);
             res.status(200).json({
@@ -76,7 +76,7 @@ class UserController {
         }
     }
     async isPhoneExists(req: Request, res: Response, next: NextFunction) {
-    
+
         try {
             getUserFromAccessToken(req);
             const { phone } = req.query as PhoneObject;
@@ -94,7 +94,7 @@ class UserController {
         }
     }
     async isAadhaarExists(req: Request, res: Response, next: NextFunction) {
-       
+
         try {
             getUserFromAccessToken(req);
             const { aadhaar } = req.query as AadhaarObject;
@@ -113,7 +113,7 @@ class UserController {
     }
 
     async deleteUser(req: Request, res: Response, next: NextFunction) {
-        
+
         try {
             const { userId } = getUserFromAccessToken(req);
             await userService.deleteUser(userId);

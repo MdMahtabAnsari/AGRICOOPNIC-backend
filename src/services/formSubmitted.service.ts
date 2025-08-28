@@ -1,7 +1,7 @@
 import { formSubmittedRepository } from "../repositories/formSubmitted.repository";
-import {InternalServerError,AppError,NotFoundError,BadRequestError,UnauthorisedError} from "../utils/errors";
-import {userRepository} from "../repositories/user.repository";
-import {categoryRepository } from "../repositories/category.repository";
+import { InternalServerError, AppError, NotFoundError, BadRequestError, UnauthorisedError } from "../utils/errors";
+import { userRepository } from "../repositories/user.repository";
+import { categoryRepository } from "../repositories/category.repository";
 import { documentRepository } from "../repositories/document.repository";
 import { educationRepository } from "../repositories/education.repository";
 import { examinationPreferenceRepository } from "../repositories/examinationPreference.repository";
@@ -15,40 +15,47 @@ import { paymentRepository } from "../repositories/payment.repository";
 
 class FormSubmittedService {
     private async isEveythingSubmitted(userId: string) {
-        try{
+        try {
             const categoryRepositoryResult = await categoryRepository.getCategoryByUserId(userId);
-            if(!categoryRepositoryResult) {
+            if (!categoryRepositoryResult) {
                 throw new NotFoundError("Category");
             }
             const documentRepositoryResult = await documentRepository.getDocumentByUserId(userId);
-            if(documentRepositoryResult.length <4) {
+            if (documentRepositoryResult.length < 4) {
                 throw new BadRequestError("Documents must be submitted");
             }
+            const jobPostRepositoryResult = await jobPostRepository.getJobPostByUserId(userId);
+            if (!jobPostRepositoryResult) {
+                throw new NotFoundError("Job Post");
+            }
             const educationRepositoryResult = await educationRepository.getEducationByUserId(userId);
-            if(educationRepositoryResult.length <3) {
+            if (educationRepositoryResult.length < 1) {
+                throw new BadRequestError("Education details must be submitted");
+            }
+            if (jobPostRepositoryResult.name != "MTS" && educationRepositoryResult.length < 2) {
+                throw new BadRequestError("Education details must be submitted");
+            }
+            if ((jobPostRepositoryResult.name === "ASSISTANT_AGRICULTURE_OFFICER" || jobPostRepositoryResult.name === "AGRICULTURE_OFFICER" || jobPostRepositoryResult.name === "FIELD_OFFICER") && educationRepositoryResult.length < 3) {
                 throw new BadRequestError("Education details must be submitted");
             }
             const examinationPreferenceRepositoryResult = await examinationPreferenceRepository.getExaminationPreferenceByUserId(userId);
-            if(examinationPreferenceRepositoryResult.length<2) {
+            if (examinationPreferenceRepositoryResult.length < 3) {
                 throw new BadRequestError("Examination preferences must be submitted");
             }
             const familyRepositoryResult = await familyRepository.getFamilyByUserId(userId);
-            if(!familyRepositoryResult) {
+            if (!familyRepositoryResult) {
                 throw new NotFoundError("Family details");
             }
-            const jobPostRepositoryResult = await jobPostRepository.getJobPostByUserId(userId);
-            if(!jobPostRepositoryResult) {
-                throw new NotFoundError("Job Post");
-            }
+
             const personalDetailRepositoryResult = await personalDetailRepository.getPersonalDetailByUserId(userId);
-            if(!personalDetailRepositoryResult) {
+            if (!personalDetailRepositoryResult) {
                 throw new NotFoundError("Personal Details");
             }
             const addressRepositoryResult = await addressRepository.getAddressByUserId(userId);
-            if(addressRepositoryResult.length<2) {
+            if (addressRepositoryResult.length < 2) {
                 throw new BadRequestError("Address details must be submitted");
             }
-           return{
+            return {
                 category: categoryRepositoryResult,
                 documents: documentRepositoryResult,
                 education: educationRepositoryResult,
@@ -58,7 +65,7 @@ class FormSubmittedService {
                 personalDetail: personalDetailRepositoryResult,
                 address: addressRepositoryResult
             };
-           
+
         }
         catch (error) {
             if (error instanceof AppError) {
@@ -75,38 +82,38 @@ class FormSubmittedService {
                 throw new NotFoundError("User");
             }
             const isEveythingSubmittedResult = await this.isEveythingSubmitted(user.id);
-            const isUserPaymentCompleted = await paymentRepository.getUserSuccessfulPayments(userId);
-            if (isUserPaymentCompleted.length === 0) {
-                throw new UnauthorisedError("Payment must be completed before submitting the form");
+            const isUserPaymentCompleted = await paymentRepository.getUserSuccessfulPaymentWithCategory(user.id,isEveythingSubmittedResult.category.categoryType);
+            if (!isUserPaymentCompleted) {
+                throw new UnauthorisedError(`Payment must be completed for category ${isEveythingSubmittedResult.category.categoryType} before submitting the form`);
             }
 
-            const template={
-                    data:{
-                        user:user,
-                        address: isEveythingSubmittedResult.address,
-                        category: isEveythingSubmittedResult.category,
-                        examinationPreferences: isEveythingSubmittedResult.examinationPreferences,
-                        documents: isEveythingSubmittedResult.documents,
-                        education: isEveythingSubmittedResult.education.map(e => ({
-                            qualification: e.qualification,
-                            institution: e.institution,
-                            boardOrUniversity: e.boardOrUniversity,
-                            marksType: e.marksType,
-                            marks: e.marks,
-                            yearOfPassing: e.yearOfPassing,
-                            subjectOrSpecialization: e.subjectOrSpecialization ?? undefined
-                        })),
-                        family: isEveythingSubmittedResult.family,
-                        jobPost:isEveythingSubmittedResult.jobPost,
-                        personalDetail: isEveythingSubmittedResult.personalDetail,
-                    }
+            const template = {
+                data: {
+                    user: user,
+                    address: isEveythingSubmittedResult.address,
+                    category: isEveythingSubmittedResult.category,
+                    examinationPreferences: isEveythingSubmittedResult.examinationPreferences,
+                    documents: isEveythingSubmittedResult.documents,
+                    education: isEveythingSubmittedResult.education.map(e => ({
+                        qualification: e.qualification,
+                        institution: e.institution,
+                        boardOrUniversity: e.boardOrUniversity,
+                        marksType: e.marksType,
+                        marks: e.marks,
+                        yearOfPassing: e.yearOfPassing,
+                        subjectOrSpecialization: e.subjectOrSpecialization ?? undefined
+                    })),
+                    family: isEveythingSubmittedResult.family,
+                    jobPost: isEveythingSubmittedResult.jobPost,
+                    personalDetail: isEveythingSubmittedResult.personalDetail,
                 }
+            }
             await conformationEmailQueue.addEmailToQueue({
-                to:user.email,
+                to: user.email,
                 template
             });
             await conformationEmailQueue.addEmailToQueue({
-                to:serverConfig.SMTP_FROM,
+                to: serverConfig.SMTP_FROM,
                 template: template
             });
 

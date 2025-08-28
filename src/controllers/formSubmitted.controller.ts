@@ -6,7 +6,7 @@ import { getUserFromAccessToken } from "../validators/auth.validator";
 
 class FormSubmittedController {
     async makeFormSubmitted(req: Request, res: Response, next: NextFunction) {
-        
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const result = await formSubmittedService.makeFormSubmitted(userId);
@@ -23,7 +23,7 @@ class FormSubmittedController {
     }
 
     async getFormSubmittedByUserId(req: Request, res: Response, next: NextFunction) {
-       
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const formSubmitted = await formSubmittedService.getFormSubmittedByUserId(userId);

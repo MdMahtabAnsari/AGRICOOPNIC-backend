@@ -2,7 +2,7 @@ import Razorpay from "razorpay";
 import { razorpayConfig } from "../configs/razorpay.config";
 import crypto from "crypto";
 
-interface CustomerDetails {
+export interface CustomerDetails {
     name?: string;
     email?: string;
     contact?: string; // Mobile number

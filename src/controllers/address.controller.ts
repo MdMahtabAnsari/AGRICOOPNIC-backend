@@ -1,10 +1,10 @@
 import { addressService } from "../services/address.service";
-import { Request, Response,NextFunction } from "express";
+import { Request, Response, NextFunction } from "express";
 import { getUserFromAccessToken } from "../validators/auth.validator";
 
 class AddressController {
     async createAddress(req: Request, res: Response, next: NextFunction) {
-        
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const address = await addressService.createAddress(userId, req.body);
@@ -21,7 +21,7 @@ class AddressController {
     }
 
     async getAddressByUserId(req: Request, res: Response, next: NextFunction) {
-        
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const address = await addressService.getAddressByUserId(userId);
@@ -38,7 +38,7 @@ class AddressController {
     }
 
     async updateAddress(req: Request, res: Response, next: NextFunction) {
-        
+
         try {
             const { userId } = getUserFromAccessToken(req);
             const updatedAddress = await addressService.updateAddress(userId, req.body);

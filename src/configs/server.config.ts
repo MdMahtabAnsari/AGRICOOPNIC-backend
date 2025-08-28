@@ -19,6 +19,8 @@ const serverConfig = {
   RAZORPAY_KEY_SECRET: process.env.RAZORPAY_KEY_SECRET,
   NODE_ENV: process.env.NODE_ENV || 'development',
   JWT_SECRET: process.env.JWT_SECRET || 'defaultsecret',
+  PHONEPE_CLIENT_ID: process.env.PHONEPE_CLIENT_ID||"your phonepe client id",
+  PHONEPE_CLIENT_SECRET: process.env.PHONEPE_CLIENT_SECRET||"your phonepe client secret",
+  
 };
-
 export default serverConfig;
