@@ -74,7 +74,7 @@ class PaymentController {
         try {
             const { orderId } = req.query as OrderIdObject;
            await paymentService.verifyPhonepePayment(orderId);
-           res.redirect("http://localhost:5173/application");
+           res.redirect("https://agricoopnic.org/application");
         } catch (error) {
             next(error);
         }
