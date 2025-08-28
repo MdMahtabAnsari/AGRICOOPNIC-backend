@@ -6,3 +6,8 @@ generated/
 /dist
 
 .env
+
+logs
+
+docker/database
+docker/redisdata

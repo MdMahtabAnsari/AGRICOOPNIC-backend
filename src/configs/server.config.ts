@@ -21,6 +21,7 @@ const serverConfig = {
   JWT_SECRET: process.env.JWT_SECRET || 'defaultsecret',
   PHONEPE_CLIENT_ID: process.env.PHONEPE_CLIENT_ID||"your phonepe client id",
   PHONEPE_CLIENT_SECRET: process.env.PHONEPE_CLIENT_SECRET||"your phonepe client secret",
-  
+  FRONTEND_URL: process.env.FRONTEND_URL||"http://localhost:5173",
+  REDIRECT_URL: process.env.REDIRECT_URL||"http://localhost:3000"
 };
 export default serverConfig;

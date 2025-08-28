@@ -2,7 +2,7 @@ import Handlebars from "handlebars";
 import mjml2html from 'mjml';
 import fs from 'fs';
 import path from 'path';
-import { ConformationPayload } from "../utils/schemas/conformationPayload.schema";
+import { ConformationPayload,ApplicationConfirmationPayload } from "../utils/schemas/conformationPayload.schema";
 import { DateTime } from 'luxon'
 
 export interface MJMLOtp {
@@ -16,6 +16,9 @@ export interface MJMLConfirmation {
     data: ConformationPayload;
 }
 
+export interface MJMLApplicationConfirmation {
+    data: ApplicationConfirmationPayload;
+}
 
 class EmailTemplateService {
 
@@ -134,6 +137,23 @@ class EmailTemplateService {
     async confirmationMjmlToHtml(template: MJMLConfirmation) {
         try {
             const templatePath = path.join(__dirname, `../../email/confirmation.mjml`);
+            console.log(`Template Path: ${templatePath}`);
+            if (!fs.existsSync(templatePath)) {
+                throw new Error(`Template file not found: ${templatePath}`);
+            }
+            const mjmlTemplate = await fs.promises.readFile(templatePath, 'utf-8');
+            const mjml = Handlebars.compile(mjmlTemplate)(template.data);
+            const { html } = mjml2html(mjml);
+            return html;
+        } catch (error) {
+            console.log(`Error in mjmlToHtml Services: ${error}`);
+            throw error;
+        }
+    }
+
+    async applicationConfirmationMjmlToHtml(template: MJMLApplicationConfirmation) {
+        try {
+            const templatePath = path.join(__dirname, `../../email/application-confirmation.mjml`);
             console.log(`Template Path: ${templatePath}`);
             if (!fs.existsSync(templatePath)) {
                 throw new Error(`Template file not found: ${templatePath}`);

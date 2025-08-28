@@ -1,7 +1,7 @@
 import { transporter } from "./nodeMailerClient";
 import { emailTemplateService } from "./emailTemplate.service";
 import { InternalServerError } from "../utils/errors";
-import { MJMLOtp,MJMLConfirmation } from "./emailTemplate.service";
+import { MJMLOtp,MJMLConfirmation,MJMLApplicationConfirmation } from "./emailTemplate.service";
 
 
 export interface EmailData{
@@ -12,6 +12,11 @@ export interface EmailData{
 export interface ConfirmationEmailData {
     to: string;
     template: MJMLConfirmation;
+}
+
+export interface ApplicationConfirmationEmailData {
+    to: string;
+    template: MJMLApplicationConfirmation;
 }
 
 class EmailService {
@@ -44,6 +49,22 @@ class EmailService {
         } catch (error) {
             console.error('Error sending confirmation email:', error);
             throw new InternalServerError('Failed to send confirmation email');
+        }
+    }
+
+    async sendApplicationConfirmationEmail(data: ApplicationConfirmationEmailData) {
+        try {
+            const htmlContent = await emailTemplateService.applicationConfirmationMjmlToHtml(data.template);
+            const mailOptions = {
+                from: process.env.SMTP_FROM,
+                to: data.to,
+                subject: 'Application Confirmation Email',
+                html: htmlContent
+            };
+            return await transporter.sendMail(mailOptions);
+        } catch (error) {
+            console.error('Error sending application confirmation email:', error);
+            throw new InternalServerError('Failed to send application confirmation email');
         }
     }
 }

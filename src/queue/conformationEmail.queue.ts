@@ -23,10 +23,10 @@ class ConformationEmailQueue {
     }
   }
 
-  async close(){
+  async close() {
     await this.bullClient.close();
   }
-  
+
 }
 
 export const conformationEmailQueue = new ConformationEmailQueue();

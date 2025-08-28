@@ -62,7 +62,7 @@ class PaymentRepository {
 
     async getUserSuccessfulPaymentWithCategory(userId: string, category: CategoryTypeEnum) {
         try {
-            const payments = await prisma.payment.findMany({
+            const payments = await prisma.payment.findFirst({
                 where: { userId, category, paymentStatus: 'COMPLETED' },
             });
             return payments;

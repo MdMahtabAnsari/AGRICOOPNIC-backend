@@ -2,6 +2,7 @@ import { paymentService } from "../services/payment.service";
 import { Request, Response, NextFunction } from "express";
 import { getUserFromAccessToken } from "../validators/auth.validator";
 import { OrderIdObject } from "../utils/schemas/payment.schema";
+import serverConfig from "../configs/server.config";
 
 
 class PaymentController {
@@ -73,8 +74,8 @@ class PaymentController {
     async verifyPhonepePayment(req: Request, res: Response, next: NextFunction) {
         try {
             const { orderId } = req.query as OrderIdObject;
-           await paymentService.verifyPhonepePayment(orderId);
-           res.redirect("https://agricoopnic.org/application");
+            await paymentService.verifyPhonepePayment(orderId);
+            res.redirect(`${serverConfig.FRONTEND_URL}/application`);
         } catch (error) {
             next(error);
         }

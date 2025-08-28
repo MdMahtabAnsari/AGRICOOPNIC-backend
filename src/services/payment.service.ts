@@ -163,8 +163,12 @@ class PaymentService {
     async verifyPhonepePayment(orderId: string) {
         try {
             const status = await phonePeService.verifyPayment(orderId);
+            console.log("Payment verification status:", status.state);
             if (status.state === 'COMPLETED') {
                 return await paymentRepository.updatePaymentIdAndStatus(orderId, status.paymentDetails[0].transactionId, 'COMPLETED');
+            }
+            else if (status.state === 'FAILED') {
+                return await paymentRepository.updatePaymentIdAndStatus(orderId, status.paymentDetails[0].transactionId, 'FAILED');
             }
             return null;
         } catch (error) {

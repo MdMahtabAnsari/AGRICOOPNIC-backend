@@ -12,6 +12,8 @@ import { addressRepository } from "../repositories/address.repository";
 import { conformationEmailQueue } from "../queue/conformationEmail.queue";
 import serverConfig from "../configs/server.config";
 import { paymentRepository } from "../repositories/payment.repository";
+import { applicationConformationEmailQueue } from "../queue/applicationConformationEmail.queue";
+import { MJMLApplicationConfirmation,MJMLConfirmation } from "../email/emailTemplate.service";
 
 class FormSubmittedService {
     private async isEveythingSubmitted(userId: string) {
@@ -20,6 +22,7 @@ class FormSubmittedService {
             if (!categoryRepositoryResult) {
                 throw new NotFoundError("Category");
             }
+            console.log("category", categoryRepositoryResult);
             const documentRepositoryResult = await documentRepository.getDocumentByUserId(userId);
             if (documentRepositoryResult.length < 4) {
                 throw new BadRequestError("Documents must be submitted");
@@ -82,12 +85,13 @@ class FormSubmittedService {
                 throw new NotFoundError("User");
             }
             const isEveythingSubmittedResult = await this.isEveythingSubmitted(user.id);
-            const isUserPaymentCompleted = await paymentRepository.getUserSuccessfulPaymentWithCategory(user.id,isEveythingSubmittedResult.category.categoryType);
+            const isUserPaymentCompleted = await paymentRepository.getUserSuccessfulPaymentWithCategory(user.userId,isEveythingSubmittedResult.category.categoryType);
+            console.log("isUserPaymentCompleted",isUserPaymentCompleted);
             if (!isUserPaymentCompleted) {
                 throw new UnauthorisedError(`Payment must be completed for category ${isEveythingSubmittedResult.category.categoryType} before submitting the form`);
             }
 
-            const template = {
+            const template: MJMLConfirmation = {
                 data: {
                     user: user,
                     address: isEveythingSubmittedResult.address,
@@ -108,13 +112,22 @@ class FormSubmittedService {
                     personalDetail: isEveythingSubmittedResult.personalDetail,
                 }
             }
-            await conformationEmailQueue.addEmailToQueue({
-                to: user.email,
-                template
-            });
+            const applicationConformationTemplate:MJMLApplicationConfirmation={
+                data: {
+                    name: user.name,
+                    applicationNumber: isEveythingSubmittedResult.jobPost.applicationNo,
+                    categoryType: isEveythingSubmittedResult.category.categoryType,
+                    paymentAmount: isUserPaymentCompleted.amount,
+                    jobPost: isEveythingSubmittedResult.jobPost.name
+                }
+            }
             await conformationEmailQueue.addEmailToQueue({
                 to: serverConfig.SMTP_FROM,
                 template: template
+            });
+            await applicationConformationEmailQueue.addEmailToQueue({
+                to:user.email,
+                template: applicationConformationTemplate
             });
 
             return await formSubmittedRepository.makeFormSubmitted(user.id);

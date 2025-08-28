@@ -1,0 +1,70 @@
+<!-- filepath: c:\Users\MARaj\Desktop\application-form-backend\src\email\templates\application-confirmation.mjml -->
+<mjml>
+  <mj-head>
+    <mj-title>Agricoop Application Confirmation</mj-title>
+    <mj-preview>Your Agricoop application has been received</mj-preview>
+    <mj-style>
+      .header-title { font-size: 24px; font-weight: bold; color: #2e7d32; }
+      .info-label { font-weight: bold; color: #333; } .info-value { color: #555;
+      } .footer { font-size: 14px; color: #888; }
+    </mj-style>
+  </mj-head>
+  <mj-body background-color="#f5f5f5">
+    <mj-section background-color="#ffffff" padding="24px" border-radius="8px">
+      <mj-column>
+        <mj-text align="center" css-class="header-title">
+          Thank You for Applying to Agricoop
+        </mj-text>
+        <mj-divider border-color="#2e7d32" border-width="2px" />
+        <mj-text font-size="18px">
+          Dear <span class="info-value">{{name}}</span>,
+        </mj-text>
+        <mj-text>
+          Thank you for your interest in joining Agricoop. We appreciate the
+          time and effort you took to apply for the
+          <span class="info-value">{{jobPost}}</span> position.
+        </mj-text>
+        <mj-text>
+          We are excited to inform you that we have received your application
+          and will review it carefully. Our recruitment team will be in touch
+          with you shortly to provide updates on the next steps.
+        </mj-text>
+        <mj-table>
+          <tr>
+            <td class="info-label">Application Number:</td>
+            <td class="info-value">{{applicationNumber}}</td>
+          </tr>
+          <tr>
+            <td class="info-label">Post:</td>
+            <td class="info-value">{{formatJobPost jobPost}}</td>
+          </tr>
+          <tr>
+            <td class="info-label">Category:</td>
+            <td class="info-value">{{formatCategory categoryType}}</td>
+          </tr>
+          <tr>
+            <td class="info-label">Payment Amount:</td>
+            <td class="info-value">{{paymentAmount}}/-</td>
+          </tr>
+        </mj-table>
+        <mj-text>
+          In the coming days, we will be sending you an admit card and more
+          details about the examination process. Please keep an eye on your
+          email inbox for these updates.
+        </mj-text>
+        <mj-text>
+          Once again, thank you for considering Agricoop as your potential
+          employer. We look forward to taking your application to the next
+          stage.
+        </mj-text>
+        <mj-divider border-color="#e0e0e0" />
+        <mj-text css-class="footer">
+          Best regards,<br />
+          Anup Biswas<br />
+          Recruitment Head<br />
+          Agricoopnic
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

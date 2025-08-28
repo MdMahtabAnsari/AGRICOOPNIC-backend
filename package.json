@@ -15,7 +15,8 @@
     "db:studio": "prisma studio",
     "db:seed": "ts-node prisma/seed.ts",
     "worker": "ts-node-dev --respawn --transpile-only src/queue/workers/index.ts",
-    "db:up": "docker compose -f docker/docker-db-compose.yml up -d"
+    "db:up": "docker compose -f docker/docker-db-compose.yml up -d",
+    "redis:up": "docker compose -f docker/docker-redis-compose.yml up -d"
   },
   "keywords": [],
   "author": "",
