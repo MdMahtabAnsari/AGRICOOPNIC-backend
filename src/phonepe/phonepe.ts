@@ -32,8 +32,7 @@ class PhonePeService {
                 .merchantOrderId(orderId)
                 .amount(amount*100)
                 .metaInfo(metaInfo)
-                .redirectUrl(`${redirectUrl}?orderId=${orderId}`)
-                .build();
+                .redirectUrl(`${redirectUrl}?orderId=${orderId}`).build();
 
             const response = await this.client.pay(request);
             return {

@@ -1,15 +1,22 @@
 import { jwtService } from "./jwt.service";
 import { authRepository } from "../repositories/auth.repository";
 import { InternalServerError, AppError, NotFoundError, UnauthorisedError } from "../utils/errors";
-import { AuthSchema } from "../utils/schemas/auth.schema";
+import { SignUpSchema, SignInSchema } from "../utils/schemas/auth.schema";
+import { hash, verify } from "argon2";
+import { UserIdEmailObjectWithOptional } from "../utils/schemas/auth.schema";
+import { otpService } from "./otp.service";
 
 class AuthService {
-    async signUp(data: AuthSchema) {
+    async signUp(data: SignUpSchema) {
         try {
-            const user = await authRepository.signUp(data);
+            const hashedPassword = await hash(data.password);
+            const user = await authRepository.signUp({ ...data, password: hashedPassword });
             return {
                 id: user.id,
-                userId: user.userId
+                userId: user.userId,
+                email: user.email,
+                createdAt: user.createdAt,
+                updatedAt: user.updatedAt
             };
         } catch (error) {
             if (error instanceof AppError) {
@@ -20,16 +27,16 @@ class AuthService {
         }
     }
 
-    async signIn(data: AuthSchema) {
+    async signIn(data: SignInSchema) {
         try {
-            const isUserExists = await authRepository.getUserById(data.userId);
+            const isUserExists = await authRepository.getUserbyIdentifier(data.identifier);
             if (!isUserExists) {
                 throw new NotFoundError("User not found");
             }
-            if (data.password !== isUserExists.password) {
+            const isPasswordValid = await verify(isUserExists.password,data.password);
+            if (!isPasswordValid) {
                 throw new UnauthorisedError("Invalid password");
             }
-            // Here you would typically verify the password, but that logic is not included in the original code.
             const accessToken = jwtService.createAccessToken({ id: isUserExists.id, userId: isUserExists.userId });
             const refreshToken = await jwtService.createRefreshToken({ id: isUserExists.id, userId: isUserExists.userId });
             return { accessToken, refreshToken };
@@ -60,6 +67,20 @@ class AuthService {
         }
     }
 
+    async verifyOtp(email: string, otp: string) {
+        try {
+            const isValid = await otpService.verifyOtp(email, otp);
+            const resetToken = jwtService.createResetToken(email);
+            return { isValid, resetToken };
+        } catch (error) {
+            if (error instanceof AppError) {
+                throw error;
+            }
+            console.error("Error verifying OTP:", error);
+            throw new InternalServerError("Failed to verify OTP");
+        }
+    }
+
     async isLoggedIn(userId: string) {
         try {
             const isUserExists = await authRepository.getUserById(userId);
@@ -76,9 +97,9 @@ class AuthService {
         }
     }
 
-    async isUserExists(userId: string) {
+    async isUserExists(data: UserIdEmailObjectWithOptional) {
         try {
-            const exists = await authRepository.isUserExists(userId);
+            const exists = await authRepository.isUserExists(data);
             return exists;
         } catch (error) {
             if (error instanceof AppError) {
@@ -89,6 +110,19 @@ class AuthService {
         }
     }
 
+    async resetPassword(email: string, password: string) {
+        try {
+            const hashedPassword = await hash(password);
+            const result = await authRepository.updatePassword(email, hashedPassword);
+            return result;
+        } catch (error) {
+            if (error instanceof AppError) {
+                throw error;
+            }
+            console.error("Error resetting password:", error);
+            throw new InternalServerError("Failed to reset password");
+        }
+    }
 
 }
 

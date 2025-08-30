@@ -7,12 +7,12 @@ import serverConfig from "../configs/server.config";
 
 class PaymentController {
 
-    async createPayment(req: Request, res: Response, next: NextFunction) {
+    async createRazorpayPayment(req: Request, res: Response, next: NextFunction) {
         try {
             const { userId } = getUserFromAccessToken(req);
-            const result = await paymentService.createPayment(userId, req.body);
+            const result = await paymentService.createRazorpayPayment(userId, req.body);
             res.status(201).json({
-                message: "Payment created successfully",
+                message: "Razorpay payment created successfully",
                 status: "success",
                 isOperational: true,
                 data: result,
@@ -23,12 +23,12 @@ class PaymentController {
         }
     }
 
-    async verifyPayment(req: Request, res: Response, next: NextFunction) {
+    async verifyRazorpayPayment(req: Request, res: Response, next: NextFunction) {
         try {
             getUserFromAccessToken(req);
-            const result = await paymentService.verifyPayment(req.body);
+            const result = await paymentService.verifyRazorpayPayment(req.body);
             res.status(200).json({
-                message: "Payment verified successfully",
+                message: "Razorpay payment verified successfully",
                 status: "success",
                 isOperational: true,
                 data: result,

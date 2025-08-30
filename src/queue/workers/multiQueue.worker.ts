@@ -33,6 +33,7 @@ class MultiQueueWorker {
 
   async close() {
     await conformationEmailQueue.close();
+    await applicationConformationEmailQueue.close();
   }
 }
 

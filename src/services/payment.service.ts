@@ -13,7 +13,7 @@ class PaymentService {
         const userIdShort = userId.slice(-10); // Last 10 characters of userId
         return `rcpt_${userIdShort}_${timestamp}`.substring(0, 40); // Ensure max 40 chars
     }
-    async createPayment(userId: string, paymentData: RoutePaymentSchema) {
+    async createRazorpayPayment(userId: string, paymentData: RoutePaymentSchema) {
         try {
             const category = await feesRepository.getFeesByCategory(paymentData.category);
             if (!category) {
@@ -72,7 +72,7 @@ class PaymentService {
         }
     }
 
-    async verifyPayment(data: VerifyPaymentSchema) {
+    async verifyRazorpayPayment(data: VerifyPaymentSchema) {
         try {
             const isValidSignature = razorpayService.verifyPaymentSignature(data.orderId, data.paymentId, data.signature);
             if (!isValidSignature) {

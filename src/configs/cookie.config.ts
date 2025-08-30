@@ -2,7 +2,7 @@ import serverConfig from "./server.config";
 import { CookieOptions } from "express";
 
 interface CookieConfig {
-    type:'refreshToken'|'accessToken',
+    type:'refreshToken'|'accessToken'|'resetToken',
     sameSite:'strict'|'lax'|'none',
     expiresIn:number
 }

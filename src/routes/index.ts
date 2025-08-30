@@ -11,6 +11,7 @@ import formSubmittedRouter from "./formSubmitted.route";
 import personalDetailRouter from "./personalDetail.route";
 import paymentRouter from "./payment.route";
 import authRouter from "./auth.route";
+import feesRouter from "./fees.route";
 import { Express } from "express";
 import { errorHandler } from "../middlewares/errorHandler.middleware";
 
@@ -28,6 +29,7 @@ const routes = (app: Express) => {
     app.use("/api/form-submitted", formSubmittedRouter);
     app.use("/api/payments", paymentRouter);
     app.use("/api/auth", authRouter);
+    app.use("/api/fees", feesRouter);
     app.use(errorHandler);
 }
 

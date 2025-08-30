@@ -25,6 +25,7 @@
   "dependencies": {
     "@prisma/client": "6.11.1",
     "@types/cookie-parser": "^1.4.9",
+    "argon2": "^0.44.0",
     "bull": "^4.16.5",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",

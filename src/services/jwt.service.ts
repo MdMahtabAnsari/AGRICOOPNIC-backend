@@ -39,6 +39,16 @@ class JwtService {
         }
     }
 
+    createResetToken(email:string) {
+        try {
+            const token = sign({ email }, serverConfig.JWT_SECRET, { expiresIn: ms('15m') / 1000 });
+            return token;
+        } catch (error) {
+            console.error(`Error in createResetToken Service: ${error}`);
+            throw new InternalServerError();
+        }
+    }
+
     getTokenLeftTime(token: string) {
         try {
             const decode = verify(token, serverConfig.JWT_SECRET) as JwtPayload;

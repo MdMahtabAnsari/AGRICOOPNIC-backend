@@ -6,15 +6,15 @@ import { Router } from "express";
 const paymentRouter: Router = Router();
 
 paymentRouter.post(
-    "/create",
+    "/create-razorpay",
     bodyValidator(routePaymentSchema),
-    paymentController.createPayment
+    paymentController.createRazorpayPayment
 );
 
 paymentRouter.post(
-    "/verify",
+    "/verify-razorpay",
     bodyValidator(verifyPaymentSchema),
-    paymentController.verifyPayment
+    paymentController.verifyRazorpayPayment
 );
 
 paymentRouter.get(

@@ -23,8 +23,6 @@ class OtpController {
     }
 
     async verifyOtp(req: Request, res: Response, next: NextFunction) {
-
-
         try {
             getUserFromAccessToken(req);
             const { email, otp } = req.body;
