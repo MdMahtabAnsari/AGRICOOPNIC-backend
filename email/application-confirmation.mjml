@@ -13,7 +13,7 @@
     <mj-section background-color="#ffffff" padding="24px" border-radius="8px">
       <mj-column>
         <mj-text align="center" css-class="header-title">
-          Thank You for Applying to Agricoop
+          Thank You for Applying to Agricoopnic
         </mj-text>
         <mj-divider border-color="#2e7d32" border-width="2px" />
         <mj-text font-size="18px">
@@ -22,7 +22,7 @@
         <mj-text>
           Thank you for your interest in joining Agricoop. We appreciate the
           time and effort you took to apply for the
-          <span class="info-value">{{jobPost}}</span> position.
+          <span class="info-value">{{formatJobPost jobPost}}</span> position.
         </mj-text>
         <mj-text>
           We are excited to inform you that we have received your application
