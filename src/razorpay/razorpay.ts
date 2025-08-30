@@ -1,6 +1,7 @@
 import Razorpay from "razorpay";
 import { razorpayConfig } from "../configs/razorpay.config";
 import crypto from "crypto";
+import { InternalServerError,AppError } from "../utils/errors";
 
 export interface CustomerDetails {
     name?: string;
@@ -9,14 +10,21 @@ export interface CustomerDetails {
 }
 
 class RazorpayService {
-    private razorpay: Razorpay;
+    private razorpay: Razorpay|null;
 
     constructor() {
-        this.razorpay = new Razorpay(razorpayConfig);
+        if(razorpayConfig.key_id && razorpayConfig.key_secret){
+            this.razorpay = new Razorpay(razorpayConfig);
+        } else {
+            this.razorpay = null;
+        }
     }
 
     async createOrder(amount: number, currency: string, receipt: string, customerDetails?: CustomerDetails) {
         try {
+            if(this.razorpay === null) {
+                throw new InternalServerError("Razorpay is not initialized");
+            }
             const options = {
                 amount: amount * 100, // Amount in paise
                 currency,
@@ -32,7 +40,10 @@ class RazorpayService {
             return await this.razorpay.orders.create(options);
         } catch (error) {
             console.error("Error creating Razorpay order:", error);
-            throw error;
+            if (error instanceof AppError) {
+                throw error;
+            }
+            throw new InternalServerError('Failed to create Razorpay order');
         }
     }
 

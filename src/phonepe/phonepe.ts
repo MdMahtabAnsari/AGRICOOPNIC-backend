@@ -2,13 +2,17 @@ import { StandardCheckoutClient, StandardCheckoutPayRequest, MetaInfo } from 'pg
 import { clientId, clientSecret, clientVersion, env, redirectUrl } from '../configs/phonepe.config';
 import { CustomerDetails } from '../razorpay/razorpay';
 import { randomUUID } from 'crypto';
-import { InternalServerError } from '../utils/errors';
+import { InternalServerError,AppError } from '../utils/errors';
 
 class PhonePeService {
-    private client: StandardCheckoutClient;
+    private client: StandardCheckoutClient|null;
 
     constructor() {
-        this.client = StandardCheckoutClient.getInstance(clientId, clientSecret, clientVersion, env);
+        if(clientId && clientSecret && clientVersion && env) {
+            this.client = StandardCheckoutClient.getInstance(clientId, clientSecret, clientVersion, env);
+        } else {
+            this.client = null;
+        }
     }
 
     private mapCustomerDetailsToMetaInfo(customerDetails: CustomerDetails): MetaInfo {
@@ -24,6 +28,9 @@ class PhonePeService {
 
     async createOrder(amount: number, customerDetails?: CustomerDetails) {
         try {
+            if(this.client === null) {
+                throw new InternalServerError("PhonePe is not initialized");
+            }
             const orderId = randomUUID();
             const metaInfo = customerDetails
                 ? this.mapCustomerDetailsToMetaInfo(customerDetails)
@@ -41,15 +48,24 @@ class PhonePeService {
             }
         } catch (error) {
             console.error('Error creating order:', error);
+            if (error instanceof AppError) {
+                throw error;
+            }
             throw new InternalServerError('Failed to create order');
         }
     }
 
     async verifyPayment(orderId: string) {
         try {
+            if(this.client === null) {
+                throw new InternalServerError("PhonePe is not initialized");
+            }
             return await this.client.getOrderStatus(orderId)
         } catch (error) {
             console.error('Error verifying payment:', error);
+            if (error instanceof AppError) {
+                throw error;
+            }
             throw new InternalServerError('Failed to verify payment');
         }
     }
