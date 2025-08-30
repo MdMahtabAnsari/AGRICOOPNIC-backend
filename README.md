@@ -5,6 +5,7 @@
 - **Node.js** (v18+ recommended)
 - **pnpm** package manager  
   Install globally:
+
   ```bash
   npm i -g pnpm
   ```
@@ -12,10 +13,13 @@
 ## Installation
 
 1. **Install dependencies:**
+
    ```bash
    pnpm install
    ```
+
 2. **(Optional) Start database and Redis with Docker:**
+
    ```bash
    pnpm run db:up
    pnpm run redis:up
@@ -55,6 +59,7 @@
    ```
 
 2. **Run database migration and generate Prisma client:**
+
    ```bash
    pnpm run db:migrate
    pnpm run db:generate
