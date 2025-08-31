@@ -2,13 +2,11 @@ import {Job} from 'bull';
 import { conformationEmailQueue } from '../conformationEmail.queue';
 import { applicationConformationEmailQueue } from '../applicationConformationEmail.queue';
 import { emailService } from '../../email/email.service';
-import { contactEmailQueue } from '../contactEmail.queue';
 
 class MultiQueueWorker {
   constructor() {
     this.startConformationEmailProcessing();
     this.startApplicationConformationEmailProcessing();
-    this.startContactEmailProcessing();
   }
 
   private startConformationEmailProcessing() {
@@ -33,19 +31,8 @@ class MultiQueueWorker {
     });
   }
 
-  private startContactEmailProcessing() {
-    contactEmailQueue.getQueue().process(async (job: Job) => {
-      try {
-        return await emailService.sendContactEmail(job.data);
-      } catch (error) {
-        console.error('Error processing email job:', error);
-        throw error; // Re-throw to let Bull handle retries
-      }
-    });
-  }
 
   async close() {
-    await contactEmailQueue.close();
     await conformationEmailQueue.close();
     await applicationConformationEmailQueue.close();
   }

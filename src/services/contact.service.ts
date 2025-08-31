@@ -1,5 +1,5 @@
 import { InternalServerError, AppError} from "../utils/errors";
-import { contactEmailQueue } from '../queue/contactEmail.queue';
+import { emailService } from "../email/email.service";
 import { ContactSchema } from "../utils/schemas/contact";
 import { ContactEmailData } from '../email/email.service';
 
@@ -10,9 +10,7 @@ class ContactService {
                 to:"support@agricoopnic.org",
                 template: { data }
             };
-            await contactEmailQueue.addEmailToQueue(
-                templateFormat
-            );
+            await emailService.sendContactEmail(templateFormat);
         } catch (error) {
             console.error('Error submitting contact form:', error);
             if (error instanceof AppError) {
