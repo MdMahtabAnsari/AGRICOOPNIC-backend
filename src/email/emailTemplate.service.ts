@@ -76,7 +76,7 @@ class EmailTemplateService {
                 'BHUBANESWAR': 'Bhubaneswar',
                 'RANCHI': 'Ranchi',
                 'PATNA': 'Patna',
-                'BANGLORE': 'Bangalore'
+                'BANGALORE': 'Bangalore'
             };
             return examCenterMap[examCenterName] || examCenterName;
         });

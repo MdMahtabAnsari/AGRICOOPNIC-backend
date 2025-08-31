@@ -14,7 +14,7 @@ export const examinationPreferenceSchema = z.object({
         'BHUBANESWAR',
         'RANCHI',
         'PATNA',
-        'BANGLORE'
+        'BANGALORE'
     ], {
         message: 'Invalid exam center name'
     })
