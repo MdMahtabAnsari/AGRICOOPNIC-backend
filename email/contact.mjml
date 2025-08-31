@@ -1,0 +1,65 @@
+<mjml>
+  <mj-head>
+    <mj-title>New Contact Form Message - AGRICOOPNIC</mj-title>
+    <mj-attributes>
+      <mj-all font-family="Helvetica, Arial, sans-serif" />
+      <mj-text font-size="16px" color="#333333" line-height="160%" />
+    </mj-attributes>
+  </mj-head>
+
+  <mj-body background-color="#f4f6f8">
+    <!-- Header with Logo -->
+    <mj-section background-color="#ffffff" padding="20px 0" border-bottom="2px solid #0052cc">
+      <mj-column>
+        <mj-image
+          width="140px"
+          src="https://res.cloudinary.com/dqdqxg7pf/image/upload/v1756339266/xqnnphtmjwosccxaeska.jpg"
+          alt="AGRICOOPNIC Logo"
+        />
+      </mj-column>
+    </mj-section>
+
+    <!-- Main Content Card -->
+    <mj-section background-color="#ffffff" border-radius="12px" padding="32px" css-class="card">
+      <mj-column>
+        <mj-text font-size="22px" font-weight="bold" color="#222222" padding-bottom="12px">
+          📩 New Contact Form Submission
+        </mj-text>
+
+        <!-- Contact Details -->
+        <mj-table font-size="16px" cellpadding="6" cellspacing="0" width="100%">
+          <tr style="background-color:#f9fafb;">
+            <td width="80" style="font-weight:bold; color:#0052cc;">Name</td>
+            <td>{{name}}</td>
+          </tr>
+          <tr>
+            <td width="80" style="font-weight:bold; color:#0052cc;">Email</td>
+            <td>{{email}}</td>
+          </tr>
+        </mj-table>
+
+        <!-- Message Box -->
+        <mj-text font-size="16px" padding-top="20px" padding-bottom="8px" font-weight="bold" color="#0052cc">
+          Message:
+        </mj-text>
+        <mj-text
+          background-color="#f1f5ff"
+          padding="16px"
+          color="#333333"
+          font-size="15px"
+        >
+          {{message}}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Footer -->
+    <mj-section background-color="#f4f6f8" padding="20px 0">
+      <mj-column>
+        <mj-text font-size="13px" color="#888888" align="center">
+          ✉️ This message was sent via the <strong>AGRICOOPNIC</strong> contact form.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
