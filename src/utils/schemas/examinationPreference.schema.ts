@@ -21,3 +21,16 @@ export const examinationPreferenceSchema = z.object({
 });
 
 export type ExaminationPreferenceSchema = z.infer<typeof examinationPreferenceSchema>;
+
+// enum ExamCenterName {
+//   DELHI_NCR
+//   LUCKNOW
+//   AHMEDABAD
+//   BHOPAL
+//   MUMBAI
+//   KOLKATA
+//   BHUBANESWAR
+//   RANCHI
+//   PATNA
+//   BANGALORE
+// }
