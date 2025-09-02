@@ -200,6 +200,7 @@ model ExaminationPreference {
   updatedAt      DateTime                  @updatedAt
 
   @@unique([userId, preferenceType])
+  @@unique([userId, preferenceType, examCenterName])
 }
 
 enum ExaminationPreferenceType {
