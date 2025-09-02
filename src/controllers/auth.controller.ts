@@ -62,12 +62,11 @@ class AuthController {
     async isLoggedIn(req: Request, res: Response, next: NextFunction) {
         try {
             const user = getUserFromAccessToken(req);
-            const isLoggedIn = await authService.isLoggedIn(user.userId);
             res.status(200).json({
                 message: "User is logged in",
                 status: "success",
                 isOperational: true,
-                data: isLoggedIn,
+                data: user,
                 statusCode: 200,
             });
         } catch (error) {

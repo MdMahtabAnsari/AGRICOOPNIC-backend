@@ -41,7 +41,7 @@ class JwtService {
 
     createResetToken(email:string) {
         try {
-            const token = sign({ email }, serverConfig.JWT_SECRET, { expiresIn: ms('15m') / 1000 });
+            const token = sign({ email }, serverConfig.JWT_SECRET, { expiresIn: ms('10m') / 1000 });
             return token;
         } catch (error) {
             console.error(`Error in createResetToken Service: ${error}`);

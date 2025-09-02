@@ -19,7 +19,7 @@ class OtpService {
             if (!otpStored) {
                 throw new InternalServerError('Failed to store OTP in Redis');
             }
-            const expiresIn = 5; // OTP valid for 5 minutes
+            const expiresIn = 10; // OTP valid for 10 minutes
             await emailService.sendOtpEmail({
                 to: email,
                 template: {

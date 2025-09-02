@@ -38,7 +38,7 @@ class FormSubmittedService {
             if (jobPostRepositoryResult.name != "MTS" && educationRepositoryResult.length < 2) {
                 throw new BadRequestError("Education details must be submitted");
             }
-            if ((jobPostRepositoryResult.name === "ASSISTANT_AGRICULTURE_OFFICER" || jobPostRepositoryResult.name === "AGRICULTURE_OFFICER") && educationRepositoryResult.length < 3) {
+            if ((jobPostRepositoryResult.name === "ASSISTANT_AGRICULTURE_OFFICER" || jobPostRepositoryResult.name === "AGRICULTURE_OFFICER" || jobPostRepositoryResult.name ==="FIELD_OFFICER") && educationRepositoryResult.length < 3) {
                 throw new BadRequestError("Education details must be submitted");
             }
             const examinationPreferenceRepositoryResult = await examinationPreferenceRepository.getExaminationPreferenceByUserId(userId);

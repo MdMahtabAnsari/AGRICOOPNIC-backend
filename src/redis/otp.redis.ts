@@ -9,7 +9,7 @@ class OTPRedis {
         try{
             const key = this.getOTPKey(email);
             const result = await redisClient.set(key, otp);
-            await redisClient.expire(key, 300);
+            await redisClient.expire(key, 600);
             return result === 'OK';
         } catch (error) {
             console.error('Error setting OTP in Redis', error);
