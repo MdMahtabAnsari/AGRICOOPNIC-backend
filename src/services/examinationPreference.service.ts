@@ -1,6 +1,6 @@
 import { examinationPreferenceRepository } from "../repositories/examinationPreference.repository";
 import { ExaminationPreferenceSchema } from "../utils/schemas/examinationPreference.schema";
-import {InternalServerError,AppError,NotFoundError,ConflictError} from "../utils/errors";
+import {InternalServerError,AppError,NotFoundError} from "../utils/errors";
 import {userRepository} from "../repositories/user.repository";
 
 class ExaminationPreferenceService {
@@ -9,11 +9,6 @@ class ExaminationPreferenceService {
             const user = await userRepository.getUserById(userId);
             if (!user) {
                 throw new NotFoundError("User");
-            }
-            const preference = data.preferenceType === 'PREFERENCE_1' ? 'PREFERENCE_2' : 'PREFERENCE_1';
-            const existingPreference = await examinationPreferenceRepository.getExaminationPreferenceByPreferenceTypeAndUserId(preference, user.id);
-            if( existingPreference && existingPreference.examCenterName === data.examCenterName) {
-                throw new ConflictError("Examination preference");
             }
             return await examinationPreferenceRepository.createExaminationPreference(user.id, data);
         } catch (error) {

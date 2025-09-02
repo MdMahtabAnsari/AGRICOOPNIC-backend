@@ -17,3 +17,13 @@ export const jobPostSchema = z.object({
 
 
 export type JobPostSchema = z.infer<typeof jobPostSchema>;
+
+
+// enum JobPostName {
+//   MTS
+//   SUPERVISOR
+//   CLERK
+//   ASSISTANT_AGRICULTURE_OFFICER
+//   AGRICULTURE_OFFICER
+//   FIELD_OFFICER
+// }
