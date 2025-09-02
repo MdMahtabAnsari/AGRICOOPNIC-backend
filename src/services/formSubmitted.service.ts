@@ -10,7 +10,6 @@ import { jobPostRepository } from "../repositories/jobPost.repository";
 import { personalDetailRepository } from "../repositories/personalDetail.repository";
 import { addressRepository } from "../repositories/address.repository";
 import { conformationEmailQueue } from "../queue/conformationEmail.queue";
-import serverConfig from "../configs/server.config";
 import { paymentRepository } from "../repositories/payment.repository";
 import { applicationConformationEmailQueue } from "../queue/applicationConformationEmail.queue";
 import { MJMLApplicationConfirmation,MJMLConfirmation } from "../email/emailTemplate.service";
@@ -122,11 +121,11 @@ class FormSubmittedService {
                 }
             }
             await conformationEmailQueue.addEmailToQueue({
-                to: serverConfig.SMTP_FROM,
+                to: "support@agricoopnic.org",
                 template: template
             });
             await applicationConformationEmailQueue.addEmailToQueue({
-                to:user.email,
+                to: user.email,
                 template: applicationConformationTemplate
             });
 
