@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - **Node.js** (v18+ recommended)
-- **pnpm** package manager  
+- **pnpm** package manager
   Install globally:
 
   ```bash
@@ -27,7 +27,7 @@
 
 ## Environment Configuration
 
-1. **Configure your `.env` file:**  
+1. **Configure your `.env` file:**
    Copy the example below and update values as needed.
 
    ```env
