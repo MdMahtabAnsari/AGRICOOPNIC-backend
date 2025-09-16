@@ -5,6 +5,7 @@ import { razorpayService } from "../razorpay/razorpay";
 import { feesRepository } from "../repositories/fees.repository";
 import { phonePeService } from "../phonepe/phonepe";
 import { randomUUID } from "crypto";
+import { payUService } from "../payu/payu";
 
 
 class PaymentService {
@@ -171,6 +172,72 @@ class PaymentService {
                 return await paymentRepository.updatePaymentIdAndStatus(orderId, status.paymentDetails[0].transactionId, 'FAILED');
             }
             return null;
+        } catch (error) {
+            if (error instanceof AppError) {
+                throw error;
+            }
+            throw new InternalServerError("Payment verification failed");
+        }
+    }
+
+    async createPayUPayment(userId: string, paymentData: RoutePaymentSchema) {
+        try {
+            const category = await feesRepository.getFeesByCategory(paymentData.category);
+            if (!category) {
+                throw new BadRequestError("Invalid category type");
+            }
+            if (category.amount === 0) {
+                const orderId = randomUUID();
+                const payment = await paymentRepository.createPayment(userId, {
+                    amount: 0,
+                    paymentId: orderId,
+                    orderId: orderId,
+                    category: paymentData.category,
+                    paymentStatus: 'COMPLETED',
+                });
+                return {
+                    payment,
+                    isFree: true
+                }
+            }
+
+            const order = await payUService.createPayment(category.amount, {
+                name: paymentData.name,
+                email: paymentData.email,
+                productInfo: paymentData.category
+            });
+            if (!order) {
+                throw new InternalServerError("Payment initiation failed");
+            }
+            const payment = await paymentRepository.createPayment(userId, {
+                amount: category.amount,
+                orderId: order.orderId,
+                category: paymentData.category,
+                paymentStatus: 'PENDING',
+            });
+            return {
+                order,
+                payment,
+                isFree: false
+            }
+        } catch (error) {
+            console.error('Error creating PayU payment:', error);
+            if (error instanceof AppError) {
+                throw error;
+            }
+            throw new InternalServerError("Payment processing failed");
+        }
+    }
+
+    async verifyPayUPayment(orderId: string) {
+        try {
+            const status = await payUService.verifyPayment(orderId);
+            if (status.status === 'success') {
+                return await paymentRepository.updatePaymentIdAndStatus(orderId, status.paymentId, 'COMPLETED');
+            }
+            else if (status.status === 'failure') {
+                return await paymentRepository.updatePaymentIdAndStatus(orderId, status.paymentId, 'FAILED');
+            }
         } catch (error) {
             if (error instanceof AppError) {
                 throw error;

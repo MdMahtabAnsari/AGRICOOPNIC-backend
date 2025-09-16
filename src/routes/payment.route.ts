@@ -34,4 +34,16 @@ paymentRouter.get(
     paymentController.verifyPhonepePayment
 );
 
+paymentRouter.post(
+    "/create-payu",
+    bodyValidator(routePaymentSchema),
+    paymentController.createPayUPayment
+);
+
+paymentRouter.post(
+    "/verify-payu",
+    queryValidator(orderIdObject),
+    paymentController.verifyPayUPayment
+);
+
 export default paymentRouter;

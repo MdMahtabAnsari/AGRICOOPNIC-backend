@@ -80,6 +80,31 @@ class PaymentController {
             next(error);
         }
     }
+
+    async createPayUPayment(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { userId } = getUserFromAccessToken(req);
+            const result = await paymentService.createPayUPayment(userId, req.body);
+            res.status(201).json({
+                message: "PayU payment created successfully",
+                status: "success",
+                isOperational: true,
+                data: result,
+                statusCode: 201,
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
+    async verifyPayUPayment(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { orderId } = req.query as OrderIdObject;
+            await paymentService.verifyPayUPayment(orderId);
+            res.redirect(`${serverConfig.FRONTEND_URL}/application/auto-submit`);
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 

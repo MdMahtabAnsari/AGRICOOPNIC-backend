@@ -12,7 +12,7 @@ async function main() {
   const feeData = [
     {
       categoryType: CategoryType.GENERAL,
-      amount: 800.0,
+      amount: 800.00,
     },
     {
       categoryType: CategoryType.EWS_OR_OBC,

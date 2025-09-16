@@ -22,6 +22,8 @@ const serverConfig = {
   PHONEPE_CLIENT_ID: process.env.PHONEPE_CLIENT_ID,
   PHONEPE_CLIENT_SECRET: process.env.PHONEPE_CLIENT_SECRET,
   FRONTEND_URL: process.env.FRONTEND_URL||"http://localhost:5173",
-  REDIRECT_URL: process.env.REDIRECT_URL||"http://localhost:3000"
+  REDIRECT_URL: process.env.REDIRECT_URL||"http://localhost:3000",
+  PAYU_MERCHANT_KEY: process.env.PAYU_MERCHANT_KEY,
+  PAYU_MERCHANT_SALT: process.env.PAYU_MERCHANT_SALT,
 };
 export default serverConfig;

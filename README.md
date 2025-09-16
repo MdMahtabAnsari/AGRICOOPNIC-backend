@@ -56,6 +56,8 @@
    REDIRECT_URL="http://localhost:3000"
 
    NODE_ENV="production"/"developement"
+   PAYU_MERCHANT_KEY="PayU Merchant Key"
+   PAYU_MERCHANT_SALT="PayU Merchant Salt"
    ```
 
 2. **Run database migration and generate Prisma client:**
