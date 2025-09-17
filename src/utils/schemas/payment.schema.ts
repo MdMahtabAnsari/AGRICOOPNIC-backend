@@ -1,11 +1,11 @@
-import {z} from 'zod/v4';
-import {categoryTypeEnum} from './category.schema';
-import { name,email,phone } from './common.schema';
+import { z } from 'zod/v4';
+import { categoryTypeEnum } from './category.schema';
+import { name, email, phone } from './common.schema';
 
 
 
 
-export const paymentStatusEnum = z.enum(['PENDING','COMPLETED','FAILED','CANCELLED','REFUNDED'], {message: 'Invalid payment status'});
+export const paymentStatusEnum = z.enum(['PENDING', 'COMPLETED', 'FAILED', 'CANCELLED', 'REFUNDED'], { message: 'Invalid payment status' });
 
 export type PaymentStatusEnum = z.infer<typeof paymentStatusEnum>;
 export const routePaymentSchema = z.object({
@@ -55,6 +55,12 @@ export type OrderIdObject = z.infer<typeof orderIdObject>;
 
 export const customVerifyPaymentSchema = verifyPaymentSchema.omit({
     signature: true
+}).extend({
+    paymentId: z
+        .string()
+        .min(12, "paymentId must be at least 12 characters")
+        .max(22, "paymentId cannot be longer than 22 characters")
+        .regex(/^[A-Za-z0-9]+$/, "paymentId must be alphanumeric only"),
 });
 
 export type CustomVerifyPaymentSchema = z.infer<typeof customVerifyPaymentSchema>;
