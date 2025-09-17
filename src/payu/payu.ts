@@ -20,12 +20,6 @@ interface PayUVerifyPaymentResponse {
 }
 class PayUService {
 
-    constructor() {
-        if (!PAYU_MERCHANT_KEY || !PAYU_MERCHANT_SALT) {
-            throw new Error("PayU is not configured properly");
-        }
-    }
-
     private generateHash(amount: number, customerDetails: CustomerDetails, orderId: string): string {
         const salt = PAYU_MERCHANT_SALT;
         const key = PAYU_MERCHANT_KEY;
