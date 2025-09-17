@@ -58,6 +58,8 @@
    NODE_ENV="production"/"developement"
    PAYU_MERCHANT_KEY="PayU Merchant Key"
    PAYU_MERCHANT_SALT="PayU Merchant Salt"
+   PAYEE_ADDRESS="Payee upi address"
+   PAYEE_NAME="Payee name"
    ```
 
 2. **Run database migration and generate Prisma client:**
