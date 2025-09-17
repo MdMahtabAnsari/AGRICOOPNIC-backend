@@ -25,5 +25,7 @@ const serverConfig = {
   REDIRECT_URL: process.env.REDIRECT_URL||"http://localhost:3000",
   PAYU_MERCHANT_KEY: process.env.PAYU_MERCHANT_KEY,
   PAYU_MERCHANT_SALT: process.env.PAYU_MERCHANT_SALT,
+  PAYEE_ADDRESS: process.env.PAYEE_ADDRESS,
+  PAYEE_NAME: process.env.PAYEE_NAME,
 };
 export default serverConfig;

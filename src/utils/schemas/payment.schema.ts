@@ -18,6 +18,14 @@ export const routePaymentSchema = z.object({
 
 export type RoutePaymentSchema = z.infer<typeof routePaymentSchema>;
 
+export const customPaymentSchema = routePaymentSchema.omit({
+    name: true,
+    email: true,
+    contact: true,
+})
+
+export type CustomPaymentSchema = z.infer<typeof customPaymentSchema>;
+
 
 export const paymentSchema = z.object({
     category: categoryTypeEnum,
@@ -44,3 +52,9 @@ export const orderIdObject = z.object({
 });
 
 export type OrderIdObject = z.infer<typeof orderIdObject>;
+
+export const customVerifyPaymentSchema = verifyPaymentSchema.omit({
+    signature: true
+});
+
+export type CustomVerifyPaymentSchema = z.infer<typeof customVerifyPaymentSchema>;

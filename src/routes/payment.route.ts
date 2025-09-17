@@ -1,5 +1,5 @@
 import { paymentController } from "../controllers/payment.controller";
-import { routePaymentSchema,verifyPaymentSchema,orderIdObject } from "../utils/schemas/payment.schema";
+import { routePaymentSchema,verifyPaymentSchema,orderIdObject,customPaymentSchema,customVerifyPaymentSchema } from "../utils/schemas/payment.schema";
 import { bodyValidator,queryValidator } from "../validators";
 import { Router } from "express";
 
@@ -44,6 +44,17 @@ paymentRouter.post(
     "/verify-payu",
     queryValidator(orderIdObject),
     paymentController.verifyPayUPayment
+);
+
+paymentRouter.post(
+    "/create-custom-payment",
+    bodyValidator(customPaymentSchema),
+    paymentController.createCustomPayment
+);
+paymentRouter.post(
+    "/verify-custom-payment",
+    bodyValidator(customVerifyPaymentSchema),
+    paymentController.verifyCustomPayment
 );
 
 export default paymentRouter;

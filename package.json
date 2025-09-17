@@ -44,6 +44,7 @@
     "pg-sdk-node": "https://phonepe.mycloudrepo.io/public/repositories/phonepe-pg-sdk-node/releases/v2/phonepe-pg-sdk-node.tgz",
     "php-serialize": "^5.1.3",
     "pino-http": "^10.5.0",
+    "qrcode": "^1.5.4",
     "razorpay": "^2.9.6",
     "zod": "^4.0.5",
     "zod-validation-error": "^3.5.3"
@@ -60,6 +61,7 @@
     "@types/nodemailer": "^6.4.17",
     "@types/otp-generator": "^4.0.2",
     "@types/pino-http": "^5.8.4",
+    "@types/qrcode": "^1.5.5",
     "eslint": "^9.31.0",
     "prisma": "^6.16.1",
     "ts-node": "^10.9.2",

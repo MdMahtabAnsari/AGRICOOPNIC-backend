@@ -1,11 +1,13 @@
 import { paymentRepository } from "../repositories/payment.repository";
 import { InternalServerError, AppError, ForbiddenError, BadRequestError, NotFoundError } from "../utils/errors";
-import { RoutePaymentSchema, VerifyPaymentSchema } from "../utils/schemas/payment.schema";
+import { RoutePaymentSchema, VerifyPaymentSchema,CustomPaymentSchema,CustomVerifyPaymentSchema } from "../utils/schemas/payment.schema";
 import { razorpayService } from "../razorpay/razorpay";
 import { feesRepository } from "../repositories/fees.repository";
 import { phonePeService } from "../phonepe/phonepe";
 import { randomUUID } from "crypto";
 import { payUService } from "../payu/payu";
+import { customPaymentService } from "../custom-payment/custom-payment";
+import { qrCodeService } from "./qrcode.service";
 
 
 class PaymentService {
@@ -238,6 +240,62 @@ class PaymentService {
             else if (status.status === 'failure') {
                 return await paymentRepository.updatePaymentIdAndStatus(orderId, status.paymentId, 'FAILED');
             }
+        } catch (error) {
+            if (error instanceof AppError) {
+                throw error;
+            }
+            throw new InternalServerError("Payment verification failed");
+        }
+    }
+
+    async createCustomPayment(userId: string, paymentData:CustomPaymentSchema) {
+        try {
+            const category = await feesRepository.getFeesByCategory(paymentData.category);
+            if (!category) {
+                throw new BadRequestError("Invalid category type");
+            }
+            if (category.amount === 0) {
+                const orderId = randomUUID();
+                const payment = await paymentRepository.createPayment(userId, {
+                    amount: 0,
+                    paymentId: orderId,
+                    orderId: orderId,
+                    category: paymentData.category,
+                    paymentStatus: 'COMPLETED',
+                });
+                return {
+                    payment,
+                    isFree: true
+                }
+            }
+            const order = customPaymentService.createPaymentRequest(category.amount);
+            const qrCodeDataUrl = await qrCodeService.generateQRCode(order.url);
+
+            const payment = await paymentRepository.createPayment(userId, {
+                amount: category.amount,
+                orderId: order.orderId,
+                category: paymentData.category,
+                paymentStatus: 'PENDING',
+            });
+            return {
+                order,
+                qrCodeDataUrl,
+                payment,
+                isFree: false
+            }
+
+        } catch (error) {
+            console.error('Error creating custom payment:', error);
+            if (error instanceof AppError) {
+                throw error;
+            }
+            throw new InternalServerError("Payment processing failed");
+        }
+    }
+
+    async verifyCustomPayment(verifyData: CustomVerifyPaymentSchema) {
+        try {
+            return await paymentRepository.updatePaymentIdAndStatus(verifyData.orderId, verifyData.paymentId, 'COMPLETED');
         } catch (error) {
             if (error instanceof AppError) {
                 throw error;

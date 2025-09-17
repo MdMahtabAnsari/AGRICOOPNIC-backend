@@ -105,7 +105,39 @@ class PaymentController {
             next(error);
         }
     }
+
+    async createCustomPayment(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { userId } = getUserFromAccessToken(req);
+            const result = await paymentService.createCustomPayment(userId, req.body);
+            res.status(201).json({
+                message: "Custom payment created successfully",
+                status: "success",
+                isOperational: true,
+                data: result,
+                statusCode: 201,
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async verifyCustomPayment(req: Request, res: Response, next: NextFunction) {
+        try {
+            getUserFromAccessToken(req);
+            const result = await paymentService.verifyCustomPayment(req.body);
+            res.status(200).json({
+                message: "Custom payment verified successfully",
+                status: "success",
+                isOperational: true,
+                data: result,
+                statusCode: 200,
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 
-export const paymentController = new PaymentController();
+    export const paymentController = new PaymentController();
