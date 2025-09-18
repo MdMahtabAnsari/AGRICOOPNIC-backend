@@ -89,7 +89,7 @@ class FormSubmittedService {
             if (!isUserPaymentCompleted) {
                 throw new UnauthorisedError(`Payment must be completed for category ${isEveythingSubmittedResult.category.categoryType} before submitting the form`);
             }
-
+            const submit = await formSubmittedRepository.makeFormSubmitted(user.id);
             const template: MJMLConfirmation = {
                 data: {
                     user: user,
@@ -109,6 +109,17 @@ class FormSubmittedService {
                     family: isEveythingSubmittedResult.family,
                     jobPost: isEveythingSubmittedResult.jobPost,
                     personalDetail: isEveythingSubmittedResult.personalDetail,
+                    paymentDetails: {
+                        ...isUserPaymentCompleted,
+                        paymentId: isUserPaymentCompleted.paymentId ?? "",
+                        url: isUserPaymentCompleted.url ?? undefined
+                    }
+                    ,
+                    formSubmission: {
+                        id: submit.id,
+                        submissionDate: submit.submissionDate,
+                        status: submit.status
+                    }
                 }
             }
             const applicationConformationTemplate:MJMLApplicationConfirmation={
@@ -121,7 +132,7 @@ class FormSubmittedService {
                 }
             }
             await conformationEmailQueue.addEmailToQueue({
-                to: "support@agricoopnic.org",
+                to: "m.a.raj58232@gmail.com",
                 template: template
             });
             await applicationConformationEmailQueue.addEmailToQueue({
@@ -129,7 +140,7 @@ class FormSubmittedService {
                 template: applicationConformationTemplate
             });
 
-            return await formSubmittedRepository.makeFormSubmitted(user.id);
+            return submit;
         } catch (error) {
             if (error instanceof AppError) {
                 throw error;

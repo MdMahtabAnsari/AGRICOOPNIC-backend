@@ -61,6 +61,7 @@ export const customVerifyPaymentSchema = verifyPaymentSchema.omit({
         .min(12, "paymentId must be at least 12 characters")
         .max(22, "paymentId cannot be longer than 22 characters")
         .regex(/^[A-Za-z0-9]+$/, "paymentId must be alphanumeric only"),
+    url:z.url({error:"Invalid URL format"})
 });
 
 export type CustomVerifyPaymentSchema = z.infer<typeof customVerifyPaymentSchema>;

@@ -35,6 +35,10 @@ class EmailTemplateService {
             return DateTime.fromISO(dateString).setZone('Asia/Kolkata').toFormat('dd/MM/yyyy');
         });
 
+        Handlebars.registerHelper('formatDateTime', (dateString: string) => {
+            return DateTime.fromISO(dateString).setZone('Asia/Kolkata').toFormat('dd/MM/yyyy hh:mm:ss a');
+        });
+
         Handlebars.registerHelper('formatJobPost', function (jobPostName: string) {
             const jobPostMap: Record<string, string> = {
                 'MTS': 'Multi Tasking Staff',

@@ -47,6 +47,24 @@ class PaymentRepository {
         }
     }
 
+    async updateCustomPaymentStatus(orderId: string,paymentId:string,url:string, paymentStatus: PaymentStatusEnum) {
+        try {
+            const updatedPayment = await prisma.payment.update({
+                where: { orderId },
+                data: { paymentId, url, paymentStatus },
+            });
+            return updatedPayment;
+        } catch (error) {
+            if (error instanceof Prisma.PrismaClientKnownRequestError) {
+                if (error.code === 'P2025') {
+                    throw new NotFoundError("Payment not found for the given order ID");
+                }
+            }
+            console.error("Error updating payment ID:", error);
+            throw new InternalServerError("Failed to update payment ID");
+        }
+    }
+
     async getUserPayments(userId: string) {
         try {
             const payments = await prisma.payment.findMany({

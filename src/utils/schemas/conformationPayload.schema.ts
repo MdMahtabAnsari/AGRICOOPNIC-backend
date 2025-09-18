@@ -9,6 +9,31 @@ import { jobPostSchema } from "./jobPost.schema";
 import { personalDetailSchema } from "./personalDetail.schema";
 import { z } from "zod/v4";
 import { JobPostEnum } from "./jobPost.schema";
+import { paymentStatusEnum } from "./payment.schema";
+
+
+const paymentDetailsSchema = z.object({
+    id:z.uuid(),
+    amount: z.number(),
+    paymentId: z.string(),
+    url:z.url().optional(),
+    orderId: z.string(),
+    paymentStatus: paymentStatusEnum,
+    createdAt: z.date(),
+    updatedAt: z.date()
+});
+
+//   id             String   @id @default(uuid())
+//   userId         String   @unique
+//   user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   submissionDate DateTime @default(now())
+//   status         Boolean  @default(false) // true if the form is successfully submitted, false otherwise
+
+const formSubmissionSchema = z.object({
+    id: z.uuid(),
+    submissionDate: z.date(),
+    status: z.boolean()
+});
 
 export const conformationPayloadSchema = z.object({
     user: userSchema,
@@ -21,7 +46,9 @@ export const conformationPayloadSchema = z.object({
     jobPost: jobPostSchema.extend({
         applicationNo: z.string(),
     }),
-    personalDetail: personalDetailSchema
+    personalDetail: personalDetailSchema,
+    paymentDetails: paymentDetailsSchema,
+    formSubmission: formSubmissionSchema
 });
 
 export type ConformationPayload = z.infer<typeof conformationPayloadSchema>;
