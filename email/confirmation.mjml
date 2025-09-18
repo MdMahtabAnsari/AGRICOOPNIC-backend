@@ -175,7 +175,7 @@
 
         <!-- Form Submission Status -->
         <mj-text css-class="card">
-          <div class="section-title">Form Submission Status</div>
+          <div class="section-title">Submission</div>
           <div class="field-grid">
             <div class="label">Status:</div>
             {{#if formSubmission.status}}
