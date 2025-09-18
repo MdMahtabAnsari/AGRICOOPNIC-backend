@@ -55,7 +55,7 @@
             <div class="value">{{jobPost.applicationNo}}</div>
             <div class="label">Name:</div>
             <div class="value">{{user.name}}</div>
-            <div class="label">Job Post:</div>
+            <div class="label">Post:</div>
             <div class="value">{{formatJobPost jobPost.name}}</div>
             <div class="label">Category:</div>
             <div class="value">{{formatCategory category.categoryType}}</div>
