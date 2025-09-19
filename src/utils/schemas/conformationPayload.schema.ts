@@ -21,7 +21,7 @@ const paymentDetailsSchema = z.object({
     paymentStatus: paymentStatusEnum,
     createdAt: z.date(),
     updatedAt: z.date(),
-    dateTime:z.string().optional()
+    dateTime:z.date().optional()
 });
 
 //   id             String   @id @default(uuid())

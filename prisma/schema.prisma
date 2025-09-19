@@ -232,7 +232,7 @@ model Payment {
   url           String?
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
-  dateTime      String? // Format: "DD-MM-YYYY HH:MM:SS AM/PM"
+  dateTime      DateTime?
 }
 
 enum PaymentStatus {
