@@ -20,7 +20,8 @@ const paymentDetailsSchema = z.object({
     orderId: z.string(),
     paymentStatus: paymentStatusEnum,
     createdAt: z.date(),
-    updatedAt: z.date()
+    updatedAt: z.date(),
+    dateTime:z.string().optional()
 });
 
 //   id             String   @id @default(uuid())

@@ -61,7 +61,8 @@ export const customVerifyPaymentSchema = verifyPaymentSchema.omit({
         .min(12, "paymentId must be at least 12 characters")
         .max(22, "paymentId cannot be longer than 22 characters")
         .regex(/^[A-Za-z0-9]+$/, "paymentId must be alphanumeric only"),
-    url:z.url({error:"Invalid URL format"})
+    url: z.url({ error: "Invalid URL format" }),
+    dateTime: z.string().regex(/^\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2} (AM|PM)$/, "Invalid date-time format")
 });
 
 export type CustomVerifyPaymentSchema = z.infer<typeof customVerifyPaymentSchema>;

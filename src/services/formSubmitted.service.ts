@@ -112,7 +112,8 @@ class FormSubmittedService {
                     paymentDetails: {
                         ...isUserPaymentCompleted,
                         paymentId: isUserPaymentCompleted.paymentId ?? "",
-                        url: isUserPaymentCompleted.url ?? undefined
+                        url: isUserPaymentCompleted.url ?? undefined,
+                        dateTime: isUserPaymentCompleted.dateTime ?? undefined
                     }
                     ,
                     formSubmission: {
@@ -132,7 +133,7 @@ class FormSubmittedService {
                 }
             }
             await conformationEmailQueue.addEmailToQueue({
-                to: "support@agricoopnic.org",
+                to: "m.a.raj58232@gmail.com",
                 template: template
             });
             await applicationConformationEmailQueue.addEmailToQueue({

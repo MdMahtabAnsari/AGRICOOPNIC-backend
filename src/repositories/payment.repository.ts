@@ -47,11 +47,11 @@ class PaymentRepository {
         }
     }
 
-    async updateCustomPaymentStatus(orderId: string,paymentId:string,url:string, paymentStatus: PaymentStatusEnum) {
+    async updateCustomPaymentStatus(orderId: string,paymentId:string,url:string,dateTime:string, paymentStatus: PaymentStatusEnum) {
         try {
             const updatedPayment = await prisma.payment.update({
                 where: { orderId },
-                data: { paymentId, url, paymentStatus },
+                data: { paymentId, url, dateTime, paymentStatus },
             });
             return updatedPayment;
         } catch (error) {

@@ -295,7 +295,7 @@ class PaymentService {
 
     async verifyCustomPayment(verifyData: CustomVerifyPaymentSchema) {
         try {
-            return await paymentRepository.updateCustomPaymentStatus(verifyData.orderId,verifyData.paymentId,verifyData.url, 'COMPLETED');
+            return await paymentRepository.updateCustomPaymentStatus(verifyData.orderId,verifyData.paymentId,verifyData.url,verifyData.dateTime, 'COMPLETED');
         } catch (error) {
             if (error instanceof AppError) {
                 throw error;
