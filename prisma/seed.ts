@@ -1,11 +1,14 @@
 import { CategoryType } from '../generated/prisma'
 import { prisma } from '../src/configs/prisma.config'
+import {config} from 'dotenv'
+config()
 
 async function main() {
   console.log('🌱 Starting to seed fees...')
 
   // Clear existing fees data
   await prisma.fees.deleteMany({})
+  await prisma.bank.deleteMany({})
   console.log('🗑️  Cleared existing fees data')
 
   // Define fee structure for different categories
@@ -33,11 +36,23 @@ async function main() {
     createdFees.push(createdFee)
   }
 
+  const bankDetails = {
+    bankName: "INDUSIND BANK",
+    accountNo: process.env.ACCOUNT_NO || "DummyAccountNo",
+    ifscCode: "INDB0000382",
+  }
+
+  const createdBank = await prisma.bank.create({
+    data: bankDetails,
+  })
+
   console.log('✅ Fee structure seeded successfully!')
   console.log('📊 Created fees:')
   createdFees.forEach(fee => {
     console.log(`   - ${fee.categoryType}: ₹${fee.amount}`)
   })
+  console.log('📊 Created bank:')
+  console.log(createdBank)
 }
 
 main()

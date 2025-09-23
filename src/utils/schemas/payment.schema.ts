@@ -66,3 +66,10 @@ export const customVerifyPaymentSchema = verifyPaymentSchema.omit({
 });
 
 export type CustomVerifyPaymentSchema = z.infer<typeof customVerifyPaymentSchema>;
+
+
+export const bankPaymentSchema = customVerifyPaymentSchema.omit({orderId: true}).extend({
+    category: categoryTypeEnum
+});
+
+export type BankPaymentSchema = z.infer<typeof bankPaymentSchema>;

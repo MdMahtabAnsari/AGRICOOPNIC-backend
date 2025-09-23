@@ -4,6 +4,7 @@ import { InternalServerError, NotFoundError, BadRequestError, ConflictError } fr
 import { PaymentSchema } from "../utils/schemas/payment.schema";
 import type { PaymentStatusEnum } from "../utils/schemas/payment.schema";
 import { CategoryTypeEnum } from "../utils/schemas/category.schema";
+import { BankPaymentSchema } from "../utils/schemas/payment.schema";
 
 
 class PaymentRepository {
@@ -47,7 +48,7 @@ class PaymentRepository {
         }
     }
 
-    async updateCustomPaymentStatus(orderId: string,paymentId:string,url:string,dateTime:Date, paymentStatus: PaymentStatusEnum) {
+    async updateCustomPaymentStatus(orderId: string, paymentId: string, url: string, dateTime: Date, paymentStatus: PaymentStatusEnum) {
         try {
             const updatedPayment = await prisma.payment.update({
                 where: { orderId },
@@ -121,6 +122,25 @@ class PaymentRepository {
         } catch (error) {
             console.error("Error checking last payment status:", error);
             throw new InternalServerError("Failed to check last payment status");
+        }
+    }
+
+    async createBankPayment(userId: string, orderId: string, paymentStatus: PaymentStatusEnum, amount: number, paymentData: BankPaymentSchema) {
+        try {
+            const newPayment = await prisma.payment.create({
+                data: {
+                    userId,
+                    ...paymentData,
+                    paymentStatus,
+                    amount,
+                    orderId
+
+                }
+            });
+            return newPayment;
+        } catch (error) {
+            console.error("Error creating bank payment:", error);
+            throw new InternalServerError("Failed to create bank payment");
         }
     }
 }

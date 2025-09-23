@@ -137,6 +137,23 @@ class PaymentController {
             next(error);
         }
     }
+
+    async bankPayment(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { userId } = getUserFromAccessToken(req);
+            const result = await paymentService.bankPayment(userId, req.body);
+            res.status(201).json({
+                message: "Bank payment created successfully",
+                status: "success",
+                isOperational: true,
+                data: result,
+                statusCode: 201,
+            });
+        }
+        catch (error) {
+            next(error);
+        }
+    }
 }
 
 

@@ -8,7 +8,7 @@ import { randomUUID } from "crypto";
 import { payUService } from "../payu/payu";
 import { customPaymentService } from "../custom-payment/custom-payment";
 import { qrCodeService } from "./qrcode.service";
-
+import { BankPaymentSchema } from "../utils/schemas/payment.schema";
 
 class PaymentService {
     private generateShortReceipt(userId: string): string {
@@ -301,6 +301,23 @@ class PaymentService {
                 throw error;
             }
             throw new InternalServerError("Payment verification failed");
+        }
+    }
+
+    async bankPayment(userId: string, paymentData:BankPaymentSchema) {
+        try {
+            const category = await feesRepository.getFeesByCategory(paymentData.category);
+            if (!category) {
+                throw new BadRequestError("Invalid category type");
+            }
+            const orderId = randomUUID();
+            const payment = await paymentRepository.createBankPayment(userId, orderId, "COMPLETED", category.amount, paymentData);
+            return payment;
+        } catch (error) {
+            if (error instanceof AppError) {
+                throw error;
+            }
+            throw new InternalServerError("Payment processing failed");
         }
     }
 }

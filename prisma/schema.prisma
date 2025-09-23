@@ -250,3 +250,12 @@ model FormSubmitted {
   submissionDate DateTime @default(now())
   status         Boolean  @default(false) // true if the form is successfully submitted, false otherwise
 }
+
+model Bank{
+  id        String   @id @default(uuid())
+  bankName  String
+  accountNo String   @unique
+  ifscCode  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

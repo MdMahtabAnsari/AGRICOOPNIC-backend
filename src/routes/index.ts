@@ -16,6 +16,7 @@ import applicationRouter from "./application.route";
 import contactRouter from "./contact.route";
 import { Express } from "express";
 import { errorHandler } from "../middlewares/errorHandler.middleware";
+import bankRouter from "./bank.route";
 
 const routes = (app: Express) => {
     app.use("/api/users", userRouter);
@@ -34,6 +35,7 @@ const routes = (app: Express) => {
     app.use("/api/fees", feesRouter);
     app.use("/api/applications", applicationRouter);
     app.use("/api/contact", contactRouter);
+    app.use("/api/bank", bankRouter);
     app.use(errorHandler);
 }
 
