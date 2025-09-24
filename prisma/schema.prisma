@@ -224,6 +224,8 @@ enum ExamCenterName {
 model Payment {
   id            String        @id @default(uuid())
   userId        String // Clerk user ID like "user_abc123"
+  email         String?
+  phone         String?
   amount        Float
   paymentId     String?       @unique
   orderId       String        @unique

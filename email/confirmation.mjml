@@ -148,11 +148,13 @@
             <div class="value">₹{{paymentDetails.amount}}</div>
             <div class="label">Status:</div>
             <div class="value">{{paymentDetails.paymentStatus}}</div>
+            <div class="label">Date & Time:</div>
+            <div class="value">{{formatDateTime paymentDetails.updatedAt}}</div>
             <!-- date time of payment if available -->
-            {{#if paymentDetails.dateTime}}
+            <!-- {{#if paymentDetails.dateTime}}
             <div class="label">Date & Time:</div>
             <div class="value">{{formatDateTime paymentDetails.dateTime}}</div>
-            {{/if}}
+            {{/if}} -->
           </div>
         </mj-text>
 

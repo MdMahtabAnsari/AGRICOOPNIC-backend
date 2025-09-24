@@ -5,7 +5,7 @@ import { PaymentSchema } from "../utils/schemas/payment.schema";
 import type { PaymentStatusEnum } from "../utils/schemas/payment.schema";
 import { CategoryTypeEnum } from "../utils/schemas/category.schema";
 import { BankPaymentSchema } from "../utils/schemas/payment.schema";
-
+import { CreateLinkPaymentSchema } from "../utils/schemas/payment.schema";
 
 class PaymentRepository {
     async createPayment(userId: string, paymentData: PaymentSchema) {
@@ -143,7 +143,61 @@ class PaymentRepository {
             throw new InternalServerError("Failed to create bank payment");
         }
     }
-}
 
+    async createLinkPayment(userId: string, orderId: string, amount: number, status: PaymentStatusEnum, paymentData: CreateLinkPaymentSchema) {
+        try {
+            return await prisma.payment.create({
+                data: {
+                    userId,
+                    phone: paymentData.contact,
+                    email: paymentData.email.toLowerCase(),
+                    category: paymentData.category,
+                    paymentStatus: status,
+                    orderId,
+                    amount
+                }
+            });
+        } catch (error) {
+            console.error("Error creating link payment:", error);
+            throw new InternalServerError("Failed to create link payment");
+        }
+    }
+
+    async getPaymentByUsernameEmailAndPhoneAndCategoryAndStatus(userId: string, email: string, phone: string, category: CategoryTypeEnum, status: PaymentStatusEnum) {
+        try {
+            const payment = await prisma.payment.findFirst({
+                where: { userId, email, phone, category, paymentStatus: status },
+                orderBy: { createdAt: 'desc' },
+            });
+            return payment;
+        } catch (error) {
+            console.error("Error fetching payment by userId, email, phone, and category:", error);
+            throw new InternalServerError("Failed to fetch payment by userId, email, phone, and category");
+        }
+    }
+
+    async getPaymentByUserIdOrEmailOrPhoneAndCategory(email: string, phone: string, status: PaymentStatusEnum) {
+        try {
+            const payment = await prisma.payment.findFirst({
+                where: {
+                    AND: [
+                        { paymentStatus: status },
+                        {
+                            OR: [
+                                { email: email.toLowerCase() },
+                                { phone }
+                            ]
+                        }
+                    ]
+                },
+                orderBy: { createdAt: 'desc' },
+            });
+            return payment;
+        } catch (error) {
+            console.error("Error fetching payment by userId, email, phone, and category:", error);
+            throw new InternalServerError("Failed to fetch payment by userId, email, phone, and category");
+        }
+    }
+}
 
 export const paymentRepository = new PaymentRepository();

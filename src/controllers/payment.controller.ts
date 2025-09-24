@@ -154,6 +154,38 @@ class PaymentController {
             next(error);
         }
     }
+
+    async createLinkPayment(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { userId } = getUserFromAccessToken(req);
+            const result = await paymentService.createLinkPayment(userId, req.body);
+            res.status(201).json({
+                message: "Link payment created successfully",
+                status: "success",
+                isOperational: true,
+                data: result,
+                statusCode: 201,
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async verifyLinkPayment(req: Request, res: Response, next: NextFunction) {
+        try {
+            console.log("Request body:", req.body);
+            const result = await paymentService.verifyLinkPayment(req.body);
+            res.status(200).json({
+                message: "Link payment verified successfully",
+                status: "success",
+                isOperational: true,
+                data: result,
+                statusCode: 200,
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 

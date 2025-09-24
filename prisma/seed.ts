@@ -36,23 +36,23 @@ async function main() {
     createdFees.push(createdFee)
   }
 
-  const bankDetails = {
-    bankName: "INDUSIND BANK",
-    accountNo: process.env.ACCOUNT_NO || "DummyAccountNo",
-    ifscCode: "INDB0000382",
-  }
+  // const bankDetails = {
+  //   bankName: "INDUSIND BANK",
+  //   accountNo: process.env.ACCOUNT_NO || "DummyAccountNo",
+  //   ifscCode: "INDB0000382",
+  // }
 
-  const createdBank = await prisma.bank.create({
-    data: bankDetails,
-  })
+  // const createdBank = await prisma.bank.create({
+  //   data: bankDetails,
+  // })
 
   console.log('✅ Fee structure seeded successfully!')
   console.log('📊 Created fees:')
   createdFees.forEach(fee => {
     console.log(`   - ${fee.categoryType}: ₹${fee.amount}`)
   })
-  console.log('📊 Created bank:')
-  console.log(createdBank)
+  // console.log('📊 Created bank:')
+  // console.log(createdBank)
 }
 
 main()

@@ -1,6 +1,6 @@
 import { paymentRepository } from "../repositories/payment.repository";
 import { InternalServerError, AppError, ForbiddenError, BadRequestError, NotFoundError } from "../utils/errors";
-import { RoutePaymentSchema, VerifyPaymentSchema,CustomPaymentSchema,CustomVerifyPaymentSchema } from "../utils/schemas/payment.schema";
+import { RoutePaymentSchema, VerifyPaymentSchema, CustomPaymentSchema, CustomVerifyPaymentSchema,CreateLinkPaymentSchema,VerifyLinkPaymentSchema } from "../utils/schemas/payment.schema";
 import { razorpayService } from "../razorpay/razorpay";
 import { feesRepository } from "../repositories/fees.repository";
 import { phonePeService } from "../phonepe/phonepe";
@@ -248,7 +248,7 @@ class PaymentService {
         }
     }
 
-    async createCustomPayment(userId: string, paymentData:CustomPaymentSchema) {
+    async createCustomPayment(userId: string, paymentData: CustomPaymentSchema) {
         try {
             const category = await feesRepository.getFeesByCategory(paymentData.category);
             if (!category) {
@@ -295,7 +295,7 @@ class PaymentService {
 
     async verifyCustomPayment(verifyData: CustomVerifyPaymentSchema) {
         try {
-            return await paymentRepository.updateCustomPaymentStatus(verifyData.orderId,verifyData.paymentId,verifyData.url,verifyData.dateTime, 'COMPLETED');
+            return await paymentRepository.updateCustomPaymentStatus(verifyData.orderId, verifyData.paymentId, verifyData.url, verifyData.dateTime, 'COMPLETED');
         } catch (error) {
             if (error instanceof AppError) {
                 throw error;
@@ -304,7 +304,7 @@ class PaymentService {
         }
     }
 
-    async bankPayment(userId: string, paymentData:BankPaymentSchema) {
+    async bankPayment(userId: string, paymentData: BankPaymentSchema) {
         try {
             const category = await feesRepository.getFeesByCategory(paymentData.category);
             if (!category) {
@@ -318,6 +318,48 @@ class PaymentService {
                 throw error;
             }
             throw new InternalServerError("Payment processing failed");
+        }
+    }
+
+    async createLinkPayment(userId: string, paymentData: CreateLinkPaymentSchema) {
+        try {
+            const category = await feesRepository.getFeesByCategory(paymentData.category);
+            if (!category) {
+                throw new BadRequestError("Invalid category type");
+            }
+            const isLinkExists = await paymentRepository.getPaymentByUsernameEmailAndPhoneAndCategoryAndStatus(userId, paymentData.email, paymentData.contact, paymentData.category, "PENDING");
+            if (isLinkExists) {
+                return isLinkExists;
+            }
+            const orderId = randomUUID();
+            const payment = await paymentRepository.createLinkPayment(userId, orderId, category.amount, "PENDING", paymentData);
+            return payment;
+        } catch (error) {
+            if (error instanceof AppError) {
+                throw error;
+            }
+            throw new InternalServerError("Payment processing failed");
+        }
+    }
+
+
+    async verifyLinkPayment(data: VerifyLinkPaymentSchema) {
+        try {
+            const isValidHash = payUService.verifyLinkPaymentHash(data);
+            console.log("Is valid hash:", isValidHash);
+            if (!isValidHash) {
+                throw new ForbiddenError("Invalid payment hash");
+            }
+            const isUserPaymentCompleted = await paymentRepository.getPaymentByUserIdOrEmailOrPhoneAndCategory(data.email.trim(), data.phone.trim().slice(2), "PENDING");
+            if (!isUserPaymentCompleted) {
+                throw new NotFoundError("Payment");
+            }
+            return await paymentRepository.updatePaymentIdAndStatus(isUserPaymentCompleted.orderId, data.mihpayid, 'COMPLETED');
+        } catch (error) {
+            if (error instanceof AppError) {
+                throw error;
+            }
+            throw new InternalServerError("Payment verification failed");
         }
     }
 }

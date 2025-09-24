@@ -2,7 +2,8 @@ import { PAYU_MERCHANT_KEY, PAYU_MERCHANT_SALT } from "../configs/payu.config";
 import { InternalServerError, AppError } from "../utils/errors";
 import { randomUUID, createHash } from 'crypto';
 import { payUClient } from "./api";
-import { unserialize} from 'php-serialize'
+import { unserialize } from 'php-serialize'
+import { HashSchema } from "../utils/schemas/payment.schema";
 
 interface CustomerDetails {
     name: string;
@@ -90,6 +91,28 @@ class PayUService {
             throw new InternalServerError("Failed to verify payment");
         }
     }
+
+    verifyLinkPaymentHash(data: HashSchema) {
+        const salt = PAYU_MERCHANT_SALT;
+        const key = data.key;
+        const txnid = data.txnid;
+        const productinfo = data.productinfo;
+        const firstname = data.firstname;
+        const email = data.email;
+        const amount = data.amount;
+        const udf1 = '';
+        const udf2 = '';
+        const udf3 = '';
+        const udf4 = '';
+        const udf5 = '';
+        const status = data.status;
+        const emptyFields = Array(5).fill('').join('|'); // only 5 empties
+
+        const hashString = `${salt}|${status}|${emptyFields}|${udf5}|${udf4}|${udf3}|${udf2}|${udf1}|${email}|${firstname}|${productinfo}|${amount}|${txnid}|${key}`;
+
+        return createHash("sha512").update(hashString).digest("hex") === data.hash;
+    }
+
 }
 
 export const payUService = new PayUService();

@@ -1,5 +1,5 @@
 import { paymentController } from "../controllers/payment.controller";
-import { routePaymentSchema,verifyPaymentSchema,orderIdObject,customPaymentSchema,customVerifyPaymentSchema,bankPaymentSchema } from "../utils/schemas/payment.schema";
+import { routePaymentSchema,verifyPaymentSchema,orderIdObject,customPaymentSchema,customVerifyPaymentSchema,bankPaymentSchema,verifyLinkPaymentSchema } from "../utils/schemas/payment.schema";
 import { bodyValidator,queryValidator } from "../validators";
 import { Router } from "express";
 
@@ -61,6 +61,19 @@ paymentRouter.post(
     "/bank-payment",
     bodyValidator(bankPaymentSchema),
     paymentController.bankPayment
+);
+
+
+paymentRouter.post(
+    "/create-link-payment",
+    bodyValidator(customPaymentSchema),
+    paymentController.createLinkPayment
+);
+
+paymentRouter.post(
+    '/webhook/payu',
+    bodyValidator(verifyLinkPaymentSchema),
+    paymentController.verifyLinkPayment
 );
 
 export default paymentRouter;

@@ -73,3 +73,37 @@ export const bankPaymentSchema = customVerifyPaymentSchema.omit({orderId: true})
 });
 
 export type BankPaymentSchema = z.infer<typeof bankPaymentSchema>;
+
+
+export const createLinkPaymentSchema = z.object({
+    email: email,
+    contact: phone,
+    category: categoryTypeEnum,
+});
+
+export type CreateLinkPaymentSchema = z.infer<typeof createLinkPaymentSchema>;
+
+
+export const verifyLinkPaymentSchema = z.object({
+    mihpayid: z.string(),
+    key: z.string(),
+    txnid: z.string(),
+    amount: z.string(),
+    productinfo: z.string(),
+    firstname: z.string(),
+    email: z.email(),
+    phone: z.string(),
+    hash: z.string(),
+    status: z.string(),
+});
+
+export type VerifyLinkPaymentSchema = z.infer<typeof verifyLinkPaymentSchema>;
+
+
+export const hashSchema = verifyLinkPaymentSchema.omit({
+    mihpayid: true,
+    phone: true,
+});
+
+export type HashSchema = z.infer<typeof hashSchema>;
+
