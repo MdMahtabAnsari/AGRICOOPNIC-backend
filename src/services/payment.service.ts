@@ -345,8 +345,10 @@ class PaymentService {
 
     async verifyLinkPayment(data: VerifyLinkPaymentSchema) {
         try {
+            if(data.status !== "success"){
+                throw new BadRequestError("Payment not successful");
+            }
             const isValidHash = payUService.verifyLinkPaymentHash(data);
-            console.log("Is valid hash:", isValidHash);
             if (!isValidHash) {
                 throw new ForbiddenError("Invalid payment hash");
             }

@@ -173,7 +173,6 @@ class PaymentController {
 
     async verifyLinkPayment(req: Request, res: Response, next: NextFunction) {
         try {
-            console.log("Request body:", req.body);
             const result = await paymentService.verifyLinkPayment(req.body);
             res.status(200).json({
                 message: "Link payment verified successfully",

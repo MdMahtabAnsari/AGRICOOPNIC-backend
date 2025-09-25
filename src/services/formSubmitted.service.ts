@@ -21,7 +21,6 @@ class FormSubmittedService {
             if (!categoryRepositoryResult) {
                 throw new NotFoundError("Category");
             }
-            console.log("category", categoryRepositoryResult);
             const documentRepositoryResult = await documentRepository.getDocumentByUserId(userId);
             if (documentRepositoryResult.length < 4) {
                 throw new BadRequestError("Documents must be submitted");
@@ -85,7 +84,6 @@ class FormSubmittedService {
             }
             const isEveythingSubmittedResult = await this.isEveythingSubmitted(user.id);
             const isUserPaymentCompleted = await paymentRepository.getUserSuccessfulPaymentWithCategory(user.userId,isEveythingSubmittedResult.category.categoryType);
-            console.log("isUserPaymentCompleted",isUserPaymentCompleted);
             if (!isUserPaymentCompleted) {
                 throw new UnauthorisedError(`Payment must be completed for category ${isEveythingSubmittedResult.category.categoryType} before submitting the form`);
             }
