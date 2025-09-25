@@ -176,12 +176,12 @@ class PaymentRepository {
         }
     }
 
-    async getPaymentByUserIdOrEmailOrPhoneAndCategory(email: string, phone: string, status: PaymentStatusEnum) {
+    async getPaymentByUserIdOrEmailOrPhoneAndCategoryAndStatus(email: string, phone: string, status: PaymentStatusEnum, category: CategoryTypeEnum) {
         try {
             const payment = await prisma.payment.findFirst({
                 where: {
                     AND: [
-                        { paymentStatus: status },
+                        { paymentStatus: status, category },
                         {
                             OR: [
                                 { email: email.toLowerCase() },

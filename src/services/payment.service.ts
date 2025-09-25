@@ -9,6 +9,7 @@ import { payUService } from "../payu/payu";
 import { customPaymentService } from "../custom-payment/custom-payment";
 import { qrCodeService } from "./qrcode.service";
 import { BankPaymentSchema } from "../utils/schemas/payment.schema";
+import { CategoryTypeEnum } from "../utils/schemas/category.schema";
 
 class PaymentService {
     private generateShortReceipt(userId: string): string {
@@ -352,7 +353,7 @@ class PaymentService {
             if (!isValidHash) {
                 throw new ForbiddenError("Invalid payment hash");
             }
-            const isUserPaymentCompleted = await paymentRepository.getPaymentByUserIdOrEmailOrPhoneAndCategory(data.email.trim(), data.phone.trim().slice(2), "PENDING");
+            const isUserPaymentCompleted = await paymentRepository.getPaymentByUserIdOrEmailOrPhoneAndCategoryAndStatus(data.email.trim(), data.phone.trim().slice(2), "PENDING", data.productinfo as CategoryTypeEnum);
             if (!isUserPaymentCompleted) {
                 throw new NotFoundError("Payment");
             }
