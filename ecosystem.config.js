@@ -3,7 +3,7 @@ module.exports = {
         {
             name: "application-form-backend",
             script: "./dist/index.js",
-            instances: "max-1", // Uses all cores except 1 (7 instances on e2-standard-8)
+            instances: "max-1",
             exec_mode: "cluster",
             max_memory_restart: "4G",
             node_args: "--max-old-space-size=4096",
