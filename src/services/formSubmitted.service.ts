@@ -131,7 +131,7 @@ class FormSubmittedService {
                 }
             }
             await conformationEmailQueue.addEmailToQueue({
-                to: "support@agricoopnic.org",
+                to: "support@agricoopnic.net",
                 template: template
             });
             await applicationConformationEmailQueue.addEmailToQueue({
