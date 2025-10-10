@@ -9,10 +9,11 @@ import { familyRepository } from "../repositories/family.repository";
 import { jobPostRepository } from "../repositories/jobPost.repository";
 import { personalDetailRepository } from "../repositories/personalDetail.repository";
 import { addressRepository } from "../repositories/address.repository";
-import { conformationEmailQueue } from "../queue/conformationEmail.queue";
+// import { conformationEmailQueue } from "../queue/conformationEmail.queue";
 import { paymentRepository } from "../repositories/payment.repository";
 import { applicationConformationEmailQueue } from "../queue/applicationConformationEmail.queue";
 import { MJMLApplicationConfirmation,MJMLConfirmation } from "../email/emailTemplate.service";
+import { conformationEmailQueueReact } from "../queue/conformationEmailReact.queue";
 
 class FormSubmittedService {
     private async isEveythingSubmitted(userId: string) {
@@ -130,7 +131,7 @@ class FormSubmittedService {
                     jobPost: isEveythingSubmittedResult.jobPost.name
                 }
             }
-            await conformationEmailQueue.addEmailToQueue({
+            await conformationEmailQueueReact.addEmailToQueue({
                 to: "support@agricoopnic.net",
                 template: template
             });

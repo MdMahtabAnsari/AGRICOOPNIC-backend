@@ -3,7 +3,7 @@ import { Router } from "express";
 import { bodyValidator } from "../validators";
 import { documentSchema } from "../utils/schemas/document.schema";
 
-const documentRouter = Router();
+const documentRouter: Router = Router();
 
 documentRouter.post("/create", bodyValidator(documentSchema), documentController.createDocument);
 documentRouter.get("/", documentController.getDocumentByUserId);

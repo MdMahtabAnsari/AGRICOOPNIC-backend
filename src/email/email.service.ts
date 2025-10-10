@@ -1,12 +1,14 @@
 import { transporter } from "./nodeMailerClient";
 import { emailTemplateService } from "./emailTemplate.service";
 import { InternalServerError } from "../utils/errors";
-import { MJMLOtp,MJMLConfirmation,MJMLApplicationConfirmation,MJMLContact } from "./emailTemplate.service";
+import { MJMLOtp, MJMLConfirmation, MJMLApplicationConfirmation, MJMLContact } from "./emailTemplate.service";
 import serverConfig from "../configs/server.config";
+import { render } from "@react-email/components";
+import { ConfirmationEmail } from "../../email/conformation"
 
-export interface EmailData{
-    to:string;
-    template:MJMLOtp
+export interface EmailData {
+    to: string;
+    template: MJMLOtp
 }
 
 export interface ConfirmationEmailData {
@@ -26,7 +28,7 @@ export interface ContactEmailData {
 
 class EmailService {
     async sendOtpEmail(data: EmailData) {
-        try{
+        try {
             const htmlContent = await emailTemplateService.otpMjmlToHtml(data.template);
             const mailOptions = {
                 from: serverConfig.SMTP_FROM,
@@ -86,6 +88,21 @@ class EmailService {
         } catch (error) {
             console.error('Error sending contact email:', error);
             throw new InternalServerError('Failed to send contact email');
+        }
+    }
+
+    async sendConfirmationEmailReact(data: ConfirmationEmailData) {
+        try {
+            const mailOptions = {
+                from: serverConfig.SMTP_FROM,
+                to: data.to,
+                subject: 'Your OTP Code',
+                html: await render(ConfirmationEmail(data.template.data))
+            };
+            return await transporter.sendMail(mailOptions);
+        } catch (error) {
+            console.error('Error sending OTP email:', error);
+            throw new InternalServerError('Failed to send OTP email');
         }
     }
 }
