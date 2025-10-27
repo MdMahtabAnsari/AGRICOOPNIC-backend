@@ -6,7 +6,7 @@ import type { PaymentStatusEnum } from "../utils/schemas/payment.schema";
 import { CategoryTypeEnum } from "../utils/schemas/category.schema";
 import { BankPaymentSchema } from "../utils/schemas/payment.schema";
 import { CreateLinkPaymentSchema } from "../utils/schemas/payment.schema";
-
+import type { FakePaymentSchema } from "../utils/schemas/payment.schema";
 class PaymentRepository {
     async createPayment(userId: string, paymentData: PaymentSchema) {
         try {
@@ -196,6 +196,25 @@ class PaymentRepository {
         } catch (error) {
             console.error("Error fetching payment by userId, email, phone, and category:", error);
             throw new InternalServerError("Failed to fetch payment by userId, email, phone, and category");
+        }
+    }
+
+    async createFakePayment(userId: string, orderId: string, amount: number, paymentStatus: PaymentStatusEnum, paymentDetails: FakePaymentSchema) {
+        try {
+            const fakePayment = await prisma.payment.create({
+                data: {
+                    userId,
+                    paymentId: paymentDetails.paymentId,
+                    orderId,
+                    amount,
+                    category: paymentDetails.category,
+                    paymentStatus
+                }
+            });
+            return fakePayment;
+        } catch (error) {
+            console.error("Error creating fake payment:", error);
+            throw new InternalServerError("Failed to create fake payment");
         }
     }
 }

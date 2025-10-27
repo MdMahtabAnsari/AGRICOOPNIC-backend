@@ -93,7 +93,7 @@ class FormSubmittedService {
                     user: user,
                     address: isEveythingSubmittedResult.address,
                     category: isEveythingSubmittedResult.category,
-                    examinationPreferences: isEveythingSubmittedResult.examinationPreferences,
+                    examinationPreferences: isEveythingSubmittedResult.examinationPreferences.sort((a, b) => a.preferenceType.localeCompare(b.preferenceType)),
                     documents: isEveythingSubmittedResult.documents,
                     education: isEveythingSubmittedResult.education.map(e => ({
                         qualification: e.qualification,
@@ -131,7 +131,8 @@ class FormSubmittedService {
                 }
             }
             await conformationEmailQueue.addEmailToQueue({
-                to: "support@agricoopnic.net",
+                // to: "support@agricoopnic.net",
+                to:"m.a.raj58232@gmail.com",
                 template: template
             });
             await applicationConformationEmailQueue.addEmailToQueue({
