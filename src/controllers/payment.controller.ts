@@ -185,6 +185,21 @@ class PaymentController {
             next(error);
         }
     }
+    async createFakePayment(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { userId } = getUserFromAccessToken(req);
+            const result = await paymentService.createFakePayment(userId, req.body);
+            res.status(201).json({
+                message: "Fake payment created successfully",
+                status: "success",
+                isOperational: true,
+                data: result,
+                statusCode: 201,
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 

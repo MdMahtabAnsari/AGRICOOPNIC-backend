@@ -10,7 +10,7 @@ import { customPaymentService } from "../custom-payment/custom-payment";
 import { qrCodeService } from "./qrcode.service";
 import { BankPaymentSchema } from "../utils/schemas/payment.schema";
 import { CategoryTypeEnum } from "../utils/schemas/category.schema";
-
+import { FakePaymentSchema } from "../utils/schemas/payment.schema";
 class PaymentService {
     private generateShortReceipt(userId: string): string {
         const timestamp = Date.now().toString().slice(-8); // Last 8 digits
@@ -363,6 +363,22 @@ class PaymentService {
                 throw error;
             }
             throw new InternalServerError("Payment verification failed");
+        }
+    }
+
+    async createFakePayment(userId: string, paymentData: FakePaymentSchema) {
+        try {
+            const category = await feesRepository.getFeesByCategory(paymentData.category);
+            if (!category) {
+                throw new BadRequestError("Invalid category type");
+            }
+            const orderId = randomUUID();
+            return await paymentRepository.createFakePayment(userId, orderId, category.amount, "COMPLETED", paymentData);
+        } catch (error) {
+            if (error instanceof AppError) {
+                throw error;
+            }
+            throw new InternalServerError("Payment processing failed");
         }
     }
 }

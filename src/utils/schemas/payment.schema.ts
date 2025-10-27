@@ -107,3 +107,9 @@ export const hashSchema = verifyLinkPaymentSchema.omit({
 
 export type HashSchema = z.infer<typeof hashSchema>;
 
+export const fakePaymentSchema = z.object({
+    category: categoryTypeEnum,
+    paymentId: z.uuid(),
+})
+
+export type FakePaymentSchema = z.infer<typeof fakePaymentSchema>;

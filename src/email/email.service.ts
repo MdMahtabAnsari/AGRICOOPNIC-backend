@@ -96,7 +96,7 @@ class EmailService {
             const mailOptions = {
                 from: serverConfig.SMTP_FROM,
                 to: data.to,
-                subject: 'Your OTP Code',
+                subject: 'Confirmation Email',
                 html: await render(ConfirmationEmail(data.template.data))
             };
             return await transporter.sendMail(mailOptions);

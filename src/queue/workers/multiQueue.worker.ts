@@ -6,7 +6,7 @@ import { conformationEmailQueueReact } from '../conformationEmailReact.queue';
 
 class MultiQueueWorker {
   constructor() {
-    this.startConformationEmailProcessing();
+    // this.startConformationEmailProcessing();
     this.startApplicationConformationEmailProcessing();
     this.startConformationEmailReactProcessing();
   }

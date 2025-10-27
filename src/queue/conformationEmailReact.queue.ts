@@ -27,6 +27,19 @@ class ConformationEmailQueueReact {
         await this.bullClient.close();
     }
 
+    async addEmailToQueueInBulk(dataArray: ConfirmationEmailData[]) {
+        try {
+            const jobs = await this.getQueue().addBulk(
+                dataArray.map(data => ({ data }))
+            );
+            console.log(`Added ${jobs.length} jobs to conformation email queue.`);
+            return jobs;
+        } catch (error) {
+            console.error('Error adding bulk jobs to conformation email queue:', error);
+            throw error;
+        }
+    }
+
 }
 
 export const conformationEmailQueueReact = new ConformationEmailQueueReact();
