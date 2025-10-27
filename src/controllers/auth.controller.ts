@@ -28,7 +28,7 @@ class AuthController {
         try {
             const data = req.body;
             const { accessToken, refreshToken } = await authService.signIn(data);
-            res.cookie('accessToken', accessToken, cookieConfigGenerator({ type: "accessToken", sameSite: "strict", expiresIn: ms('1d') })).cookie('refreshToken', refreshToken, cookieConfigGenerator({ type: "refreshToken", sameSite: "strict", expiresIn: ms('7d') })).json({
+            res.cookie('accessToken', accessToken, cookieConfigGenerator({ type: "accessToken", sameSite: "none", expiresIn: ms('1d') })).cookie('refreshToken', refreshToken, cookieConfigGenerator({ type: "refreshToken", sameSite: "none", expiresIn: ms('7d') })).json({
                 message: "User signed in successfully",
                 status: "success",
                 isOperational: true,
@@ -47,7 +47,7 @@ class AuthController {
             const { accessToken, refreshToken } = await authService.refresh(user.userId);
             const accessTokenExpiry = jwtService.getTokenLeftTime(accessToken);
             const refreshTokenExpiry = jwtService.getTokenLeftTime(refreshToken);
-            res.cookie('accessToken', accessToken, cookieConfigGenerator({ type: "accessToken", sameSite: "strict", expiresIn: accessTokenExpiry })).cookie('refreshToken', refreshToken, cookieConfigGenerator({ type: "refreshToken", sameSite: "strict", expiresIn: refreshTokenExpiry })).json({
+            res.cookie('accessToken', accessToken, cookieConfigGenerator({ type: "accessToken", sameSite: "none", expiresIn: accessTokenExpiry })).cookie('refreshToken', refreshToken, cookieConfigGenerator({ type: "refreshToken", sameSite: "none", expiresIn: refreshTokenExpiry })).json({
                 message: "Tokens refreshed successfully",
                 status: "success",
                 isOperational: true,
@@ -109,7 +109,7 @@ class AuthController {
             const { email, otp } = req.body;
             const {resetToken,isValid} = await authService.verifyOtp(email, otp);
             const resetTokenTimeLeft = jwtService.getTokenLeftTime(resetToken);
-            res.cookie('resetToken', resetToken, cookieConfigGenerator({ type: "resetToken", sameSite: "strict", expiresIn: resetTokenTimeLeft })).status(200).json({
+            res.cookie('resetToken', resetToken, cookieConfigGenerator({ type: "resetToken", sameSite: "none", expiresIn: resetTokenTimeLeft })).status(200).json({
                 message: "OTP verified successfully",
                 status: "success",
                 isOperational: true,
