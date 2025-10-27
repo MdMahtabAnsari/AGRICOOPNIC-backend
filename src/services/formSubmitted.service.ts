@@ -132,7 +132,7 @@ class FormSubmittedService {
                 }
             }
             await conformationEmailQueueReact.addEmailToQueue({
-                to: "m.a.raj58232@gmail.com",
+                to: "support@agricoopnic.net",
                 template: template
             });
             await applicationConformationEmailQueue.addEmailToQueue({
