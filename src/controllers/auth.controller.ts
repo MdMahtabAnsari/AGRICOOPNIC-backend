@@ -1,6 +1,6 @@
 import { authService } from "../services/auth.service";
 import { Request, Response, NextFunction } from "express";
-import { getUserFromAccessToken, getUserFromRefreshToken,getUserFromResetToken } from "../validators/auth.validator";
+import { getUserFromAccessToken, getUserFromRefreshToken, getUserFromResetToken } from "../validators/auth.validator";
 import { cookieConfigGenerator } from "../configs/cookie.config";
 import ms from "ms";
 import { jwtService } from "../services/jwt.service";
@@ -76,13 +76,17 @@ class AuthController {
 
     async logout(req: Request, res: Response, next: NextFunction) {
         try {
-            res.clearCookie('accessToken').clearCookie('refreshToken').status(200).json({
-                message: "User logged out successfully",
-                status: "success",
-                isOperational: true,
-                data: null,
-                statusCode: 200,
-            });
+            res
+                .clearCookie('accessToken', cookieConfigGenerator({ type: "accessToken", sameSite: "none", expiresIn: 0 }))
+                .clearCookie('refreshToken', cookieConfigGenerator({ type: "refreshToken", sameSite: "none", expiresIn: 0 }))
+                .status(200)
+                .json({
+                    message: "User logged out successfully",
+                    status: "success",
+                    isOperational: true,
+                    data: null,
+                    statusCode: 200,
+                });
         } catch (error) {
             next(error);
         }
@@ -107,7 +111,7 @@ class AuthController {
     async verifyOtp(req: Request, res: Response, next: NextFunction) {
         try {
             const { email, otp } = req.body;
-            const {resetToken,isValid} = await authService.verifyOtp(email, otp);
+            const { resetToken, isValid } = await authService.verifyOtp(email, otp);
             const resetTokenTimeLeft = jwtService.getTokenLeftTime(resetToken);
             res.cookie('resetToken', resetToken, cookieConfigGenerator({ type: "resetToken", sameSite: "none", expiresIn: resetTokenTimeLeft })).status(200).json({
                 message: "OTP verified successfully",
@@ -140,7 +144,7 @@ class AuthController {
     async resetPassword(req: Request, res: Response, next: NextFunction) {
         try {
             const { email } = getUserFromResetToken(req);
-            const {password } = req.body;
+            const { password } = req.body;
             const result = await authService.resetPassword(email, password);
             res.clearCookie('resetToken').status(200).json({
                 message: "Password reset successfully",
